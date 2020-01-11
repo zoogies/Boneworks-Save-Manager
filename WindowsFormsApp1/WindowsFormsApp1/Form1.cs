@@ -59,8 +59,8 @@ namespace WindowsFormsApp1
 
             //var backup_current_to_100 = @"C:\\Program Files(x86)\\Yoyolick\\Boneworks Save Manager\\data\\backup_current_to_100.py";
             //THIS IS THE FINAL ONE YOU NEED TO UNCOMMENT AFTER FINISHING CODEBASE^^^^
-            var backup_current_to_100 = @"C:\\Users\\swoos\\source\\repos\\Boneworks-Save-Manager\\WindowsFormsApp1\\WindowsFormsApp1\\bin\\Debug\\data\\backup_current_to_100.py";
-            psi.Arguments = $"\"{backup_current_to_100}\"\""; //todo make this whole area stuff for dependant on which save load
+            var backup_current_to_hundred = @"C:\\Users\\swoos\\source\\repos\\Boneworks-Save-Manager\\WindowsFormsApp1\\WindowsFormsApp1\\bin\\Debug\\data\\backup_current_to_hundred.py";
+            psi.Arguments = $"\"{backup_current_to_hundred}\"\""; //todo make this whole area stuff for dependant on which save load
 
             //args here if ever needed i dont have foresight
             //https://www.youtube.com/watch?v=g1VWGdHRkHs if youre reading this its only possible because of this video
