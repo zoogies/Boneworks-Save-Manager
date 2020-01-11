@@ -63,6 +63,7 @@
             this.btnBackup.TabIndex = 1;
             this.btnBackup.Text = "Backup Current Save";
             this.btnBackup.UseVisualStyleBackColor = true;
+            this.btnBackup.Click += new System.EventHandler(this.btnBackup_Click);
             // 
             // pathInput
             // 
@@ -160,6 +161,7 @@
             this.btnLoad.TabIndex = 11;
             this.btnLoad.Text = "Load Profile";
             this.btnLoad.UseVisualStyleBackColor = true;
+            this.btnLoad.Click += new System.EventHandler(this.btnLoad_Click);
             // 
             // Form1
             // 
