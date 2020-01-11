@@ -19,11 +19,15 @@ namespace WindowsFormsApp1
 
         private void Form1_Load(object sender, EventArgs e)
         {
+
+            //C:\\Program Files (x86)\\Yoyolick\\Boneworks Save Manager
+            //path of install when using visual studio installer
+
             //make form non resizable
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
 
             //set path box to be previous entered path
-            string text = System.IO.File.ReadAllText(@"C: \Users\swoos\source\repos\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\data\saved_path.txt");
+            string text = System.IO.File.ReadAllText(@"C:\\Program Files (x86)\\Yoyolick\\Boneworks Save Manager\\data\\saved_path.txt");
             pathInput.Text = text;
 
             //turn buttons off because no save selected
@@ -35,10 +39,13 @@ namespace WindowsFormsApp1
             }
 
             //set application icon
-            this.Icon = new Icon("C:\\Users\\swoos\\source\\repos\\WindowsFormsApp1\\WindowsFormsApp1\\bin\\Debug\\data\\application_icon.ico");
+            this.Icon = new Icon("C:\\Program Files (x86)\\Yoyolick\\Boneworks Save Manager\\data\\application_icon.ico");
 
             //set splash image
-            pictureBox1.Image = Image.FromFile("C:\\Users\\swoos\\source\\repos\\WindowsFormsApp1\\WindowsFormsApp1\\bin\\Debug\\data\\splashimage.jpg");
+            pictureBox1.Image = Image.FromFile("C:\\Program Files (x86)\\Yoyolick\\Boneworks Save Manager\\data\\splashimage.jpg");
+
+            //Connects to python files for moving saves
+
         }
 
         private void btnHelp_Click(object sender, EventArgs e)
@@ -49,7 +56,7 @@ namespace WindowsFormsApp1
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             string[] savedPath = {pathInput.Text};
-            System.IO.File.WriteAllLines(@"C:\Users\swoos\source\repos\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\data\saved_path.txt", savedPath);
+            System.IO.File.WriteAllLines(@"C:\\Program Files (x86)\\Yoyolick\\Boneworks Save Manager\\data\\saved_path.txt", savedPath);
         }
 
         private void selectedProfile_SelectedIndexChanged(object sender, EventArgs e)
