@@ -1,0 +1,205 @@
+﻿namespace BSM
+{
+    partial class Form1
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.tbPath = new System.Windows.Forms.TextBox();
+            this.btnUpdate = new System.Windows.Forms.Button();
+            this.btnPathHelp = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.cbxProfile = new System.Windows.Forms.ComboBox();
+            this.btnLoadProfile = new System.Windows.Forms.Button();
+            this.btnSaveToProfile = new System.Windows.Forms.Button();
+            this.btnWipeProfile = new System.Windows.Forms.Button();
+            this.btnProfileHelp = new System.Windows.Forms.Button();
+            this.pbSplashImage = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pbSplashImage)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(5, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(458, 42);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Boneworks Save Manager";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(9, 51);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(149, 13);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Path to boneworks save data:";
+            // 
+            // tbPath
+            // 
+            this.tbPath.Location = new System.Drawing.Point(12, 68);
+            this.tbPath.Name = "tbPath";
+            this.tbPath.Size = new System.Drawing.Size(356, 20);
+            this.tbPath.TabIndex = 2;
+            // 
+            // btnUpdate
+            // 
+            this.btnUpdate.Location = new System.Drawing.Point(374, 66);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(57, 23);
+            this.btnUpdate.TabIndex = 3;
+            this.btnUpdate.Text = "Update";
+            this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            // 
+            // btnPathHelp
+            // 
+            this.btnPathHelp.Location = new System.Drawing.Point(437, 66);
+            this.btnPathHelp.Name = "btnPathHelp";
+            this.btnPathHelp.Size = new System.Drawing.Size(22, 23);
+            this.btnPathHelp.TabIndex = 4;
+            this.btnPathHelp.Text = "?";
+            this.btnPathHelp.UseVisualStyleBackColor = true;
+            this.btnPathHelp.Click += new System.EventHandler(this.btnPathHelp_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(9, 94);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(66, 13);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "Save profile:";
+            // 
+            // cbxProfile
+            // 
+            this.cbxProfile.FormattingEnabled = true;
+            this.cbxProfile.Items.AddRange(new object[] {
+            "personal save",
+            "sandbox save"});
+            this.cbxProfile.Location = new System.Drawing.Point(12, 110);
+            this.cbxProfile.Name = "cbxProfile";
+            this.cbxProfile.Size = new System.Drawing.Size(108, 21);
+            this.cbxProfile.TabIndex = 6;
+            // 
+            // btnLoadProfile
+            // 
+            this.btnLoadProfile.Location = new System.Drawing.Point(126, 108);
+            this.btnLoadProfile.Name = "btnLoadProfile";
+            this.btnLoadProfile.Size = new System.Drawing.Size(86, 23);
+            this.btnLoadProfile.TabIndex = 7;
+            this.btnLoadProfile.Text = "Load Profile";
+            this.btnLoadProfile.UseVisualStyleBackColor = true;
+            this.btnLoadProfile.Click += new System.EventHandler(this.btnLoadProfile_Click);
+            // 
+            // btnSaveToProfile
+            // 
+            this.btnSaveToProfile.Location = new System.Drawing.Point(218, 108);
+            this.btnSaveToProfile.Name = "btnSaveToProfile";
+            this.btnSaveToProfile.Size = new System.Drawing.Size(100, 23);
+            this.btnSaveToProfile.TabIndex = 8;
+            this.btnSaveToProfile.Text = "Save To Profile";
+            this.btnSaveToProfile.UseVisualStyleBackColor = true;
+            this.btnSaveToProfile.Click += new System.EventHandler(this.btnSaveToProfile_Click);
+            // 
+            // btnWipeProfile
+            // 
+            this.btnWipeProfile.Location = new System.Drawing.Point(324, 108);
+            this.btnWipeProfile.Name = "btnWipeProfile";
+            this.btnWipeProfile.Size = new System.Drawing.Size(107, 23);
+            this.btnWipeProfile.TabIndex = 9;
+            this.btnWipeProfile.Text = "Wipe Profile Data";
+            this.btnWipeProfile.UseVisualStyleBackColor = true;
+            // 
+            // btnProfileHelp
+            // 
+            this.btnProfileHelp.Location = new System.Drawing.Point(437, 108);
+            this.btnProfileHelp.Name = "btnProfileHelp";
+            this.btnProfileHelp.Size = new System.Drawing.Size(22, 23);
+            this.btnProfileHelp.TabIndex = 10;
+            this.btnProfileHelp.Text = "?";
+            this.btnProfileHelp.UseVisualStyleBackColor = true;
+            this.btnProfileHelp.Click += new System.EventHandler(this.btnProfileHelp_Click);
+            // 
+            // pbSplashImage
+            // 
+            this.pbSplashImage.Location = new System.Drawing.Point(12, 147);
+            this.pbSplashImage.Name = "pbSplashImage";
+            this.pbSplashImage.Size = new System.Drawing.Size(447, 291);
+            this.pbSplashImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbSplashImage.TabIndex = 11;
+            this.pbSplashImage.TabStop = false;
+            // 
+            // Form1
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.ClientSize = new System.Drawing.Size(473, 450);
+            this.Controls.Add(this.pbSplashImage);
+            this.Controls.Add(this.btnProfileHelp);
+            this.Controls.Add(this.btnWipeProfile);
+            this.Controls.Add(this.btnSaveToProfile);
+            this.Controls.Add(this.btnLoadProfile);
+            this.Controls.Add(this.cbxProfile);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.btnPathHelp);
+            this.Controls.Add(this.btnUpdate);
+            this.Controls.Add(this.tbPath);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.MaximizeBox = false;
+            this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "BSM";
+            this.Load += new System.EventHandler(this.Form1_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pbSplashImage)).EndInit();
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
+        }
+
+        #endregion
+
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox tbPath;
+        private System.Windows.Forms.Button btnUpdate;
+        private System.Windows.Forms.Button btnPathHelp;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ComboBox cbxProfile;
+        private System.Windows.Forms.Button btnLoadProfile;
+        private System.Windows.Forms.Button btnSaveToProfile;
+        private System.Windows.Forms.Button btnWipeProfile;
+        private System.Windows.Forms.Button btnProfileHelp;
+        private System.Windows.Forms.PictureBox pbSplashImage;
+    }
+}
+
