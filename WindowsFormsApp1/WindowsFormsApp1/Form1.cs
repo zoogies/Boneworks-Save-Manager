@@ -59,22 +59,27 @@ namespace WindowsFormsApp1
 
             var backup_current_to_100 = @"C:\\Program Files(x86)\\Yoyolick\\Boneworks Save Manager\\data\\backup_current_to_100.py";
 
+            psi.Arguments = $"\"{backup_current_to_100}\"\""; //todo make this whole area stuff for dependant on which save load
+
             //args here if ever needed i dont have foresight
             //https://www.youtube.com/watch?v=g1VWGdHRkHs if youre reading this its only possible because of this video
 
             //psi.UseShellExecute = false; //for normal
             //psi.CreateNoWindow = true; //for normal
-            psi.UseShellExecute = true; //for debug
+            psi.UseShellExecute = false;
             psi.CreateNoWindow = false; //for debug
-
+            psi.RedirectStandardOutput = true;
             psi.RedirectStandardError = true;
             var errors = "";
+            var results = "";
 
             using(var process = Process.Start(psi))
             {
                 errors = process.StandardError.ReadToEnd();
+                results = process.StandardOutput.ReadToEnd();
             }
 
+            MessageBox.Show(results);
 
 
         }
