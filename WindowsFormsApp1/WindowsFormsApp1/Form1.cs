@@ -20,11 +20,20 @@ namespace WindowsFormsApp1
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            //set username for use in path stuff
+            var username = Environment.UserName;
+
             //C:\\Program Files (x86)\\Yoyolick\\Boneworks Save Manager
             //path of install when using visual studio installer
-
+            //C:\\Users\\YOUR USER HERE\\AppData\\LocalLow\\Stress Level Zero\\BONEWORKS\\resources1.dat
             //make form non resizable
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
+
+            //attempt to auto detect path to save data
+            //if (System.IO.File.ReadAllLines("C:\\Program Files(x86)\\Yoyolick\\Boneworks Save Manager\\data\\saved_path.txt") == )
+            //{
+            //    string text = System.IO.File.WriteAllLines(@"C:\\Users\\" + username + "\\AppData\\LocalLow\\Stress Level Zero\\BONEWORKS\\resources1.dat");
+            //} TODO
 
             //set path box to be previous entered path
             string text = System.IO.File.ReadAllText(@"C:\\Program Files (x86)\\Yoyolick\\Boneworks Save Manager\\data\\saved_path.txt");
@@ -45,7 +54,6 @@ namespace WindowsFormsApp1
             pictureBox1.Image = Image.FromFile("C:\\Program Files (x86)\\Yoyolick\\Boneworks Save Manager\\data\\splashimage.jpg");
 
             //Connects to python files for moving saves
-            var username = Environment.UserName;
             var psi = new ProcessStartInfo();
             psi.FileName = @"C:\\Users\\" + username + "\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Python 3.8 (64-bit).exe";
 
