@@ -57,8 +57,9 @@ namespace WindowsFormsApp1
             var psi = new ProcessStartInfo();
             psi.FileName = @"C:\\Users\\" + username + "\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Python 3.8 (64-bit).exe";
 
-            var backup_current_to_100 = @"C:\\Program Files(x86)\\Yoyolick\\Boneworks Save Manager\\data\\backup_current_to_100.py";
-
+            //var backup_current_to_100 = @"C:\\Program Files(x86)\\Yoyolick\\Boneworks Save Manager\\data\\backup_current_to_100.py";
+            //THIS IS THE FINAL ONE YOU NEED TO UNCOMMENT AFTER FINISHING CODEBASE^^^^
+            var backup_current_to_100 = @"C:\\Users\\swoos\\source\\repos\\Boneworks-Save-Manager\\WindowsFormsApp1\\WindowsFormsApp1\\bin\\Debug\\data\\backup_current_to_100.py";
             psi.Arguments = $"\"{backup_current_to_100}\"\""; //todo make this whole area stuff for dependant on which save load
 
             //args here if ever needed i dont have foresight
