@@ -20,7 +20,7 @@ namespace WindowsFormsApp1
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            //set username for use in path stuff
+            //set username for use in path stufff
             var username = Environment.UserName;
 
             //C:\\Program Files (x86)\\Yoyolick\\Boneworks Save Manager
