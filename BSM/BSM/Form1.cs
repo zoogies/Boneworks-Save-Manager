@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -28,13 +29,49 @@ namespace BSM
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            //Code by Ryan Zmuda
+            //Code by Ryan Zmuda 2020
             //Reference:
             //Application data path: C:\Users\swoos\Documents\BSM
             //TODO create backups of save data in each directory and create directories and create images on launch
 
-            //set paths
+            //set data path for use in creating files if not present or first launch
             dataPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\BSM\\";
+
+            //Create application data directories if not present as well as download required images
+            if (!Directory.Exists(dataPath))
+            {
+                MessageBox.Show("BSM directory not detected (this occurs on first run). Attempting to download neccesary files.", "Application Directory Missing", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Directory.CreateDirectory(dataPath);
+                Directory.CreateDirectory(dataPath + "\\personal_save");
+                Directory.CreateDirectory(dataPath + "\\sandbox_save");
+                File.Create(dataPath + "saved_path.txt").Dispose();
+                using (WebClient client = new WebClient())
+                {
+                    client.DownloadFile("http://www.iconj.com/ico/l/u/lufczubxnj.ico", dataPath + "\\application_icon.ico");
+                }
+                using (WebClient client = new WebClient())
+                {
+                    client.DownloadFile("https://camo.githubusercontent.com/d327cb4332077b1999e18c1cc8d049529d2883e8/68747470733a2f2f7777772e6765656b792d676164676574732e636f6d2f77702d636f6e74656e742f75706c6f6164732f323031392f31312f426f6e65776f726b732d56522d47616d652e6a7067", dataPath + "\\splash_image.jpg");
+                }
+                resourcesPath = File.ReadAllText(dataPath + "saved_path.txt");
+                tbPath.Text = resourcesPath.Trim('\n', '\r');
+                if (String.IsNullOrEmpty(tbPath.Text))
+                {
+                    username = Environment.UserName;
+                    tbPath.Text = "C:\\Users\\" + username + "\\AppData\\LocalLow\\Stress Level Zero\\BONEWORKS\\resources1.dat";
+                    string[] userPath = { tbPath.Text };
+                    File.WriteAllLines(dataPath + "saved_path.txt", userPath);
+                    MessageBox.Show("You have yet to set the save path to boneworks, this is the auto assumed path. Click the ? to see more information and double check this path before clicking update.", "Auto Assume Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                resourcesPath = File.ReadAllText(dataPath + "saved_path.txt");
+                sandboxpath = dataPath + "\\sandbox_save\\resources1.dat";
+                personalpath = dataPath + "\\personal_save\\resources1.dat";
+                File.Copy(resourcesPath, sandboxpath, true);
+                File.Copy(resourcesPath, personalpath, true);
+                MessageBox.Show("Created BSM directory and downloaded neccessary images and files.", "Application Directory Created", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
+            //create other paths
             resourcesPath = System.IO.File.ReadAllText(dataPath + "saved_path.txt");
             sandboxpath = dataPath + "\\sandbox_save\\resources1.dat";
             personalpath = dataPath + "\\personal_save\\resources1.dat";
@@ -49,6 +86,8 @@ namespace BSM
             if (String.IsNullOrEmpty(tbPath.Text))
             {
                 tbPath.Text = "C:\\Users\\" + username + "\\AppData\\LocalLow\\Stress Level Zero\\BONEWORKS\\resources1.dat";
+                string[] userPath = { tbPath.Text };
+                File.WriteAllLines(dataPath + "saved_path.txt", userPath);
                 MessageBox.Show("You have yet to set the save path to boneworks, this is the auto assumed path. Click the ? to see more information and double check this path before clicking update.", "Auto Assume Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
@@ -61,7 +100,7 @@ namespace BSM
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             string[] userPath = { tbPath.Text };
-            System.IO.File.WriteAllLines(dataPath + "saved_path.txt", userPath);
+            File.WriteAllLines(dataPath + "saved_path.txt", userPath);
             MessageBox.Show("Updated save path to currently entered path.", "Help Window", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
@@ -179,5 +218,14 @@ namespace BSM
             Process.Start("https://github.com/Yoyolick/Boneworks-Save-Manager/issues");
         }
 
+        private void btnBrowseBoneworks_Click(object sender, EventArgs e)
+        {
+            Process.Start("explorer.exe", "C:\\Users\\" + username + "\\AppData\\LocalLow\\Stress Level Zero\\BONEWORKS");
+        }
+
+        private void btnBrowseBSM_Click(object sender, EventArgs e)
+        {
+            Process.Start("explorer.exe", dataPath);
+        }
     }
 }

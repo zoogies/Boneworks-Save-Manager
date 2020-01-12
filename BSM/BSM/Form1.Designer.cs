@@ -170,6 +170,7 @@
             this.btnBrowseBoneworks.Text = "Browse Boneworks Data";
             this.browseBoneworksTip.SetToolTip(this.btnBrowseBoneworks, "Will open your saved boneworks path in file explorer");
             this.btnBrowseBoneworks.UseVisualStyleBackColor = true;
+            this.btnBrowseBoneworks.Click += new System.EventHandler(this.btnBrowseBoneworks_Click);
             // 
             // btnBrowseBSM
             // 
@@ -180,6 +181,7 @@
             this.btnBrowseBSM.Text = "Browse BSM Data";
             this.browseBSMTip.SetToolTip(this.btnBrowseBSM, "Will open BSM\'s data folder in file explorer");
             this.btnBrowseBSM.UseVisualStyleBackColor = true;
+            this.btnBrowseBSM.Click += new System.EventHandler(this.btnBrowseBSM_Click);
             // 
             // label4
             // 
@@ -212,9 +214,6 @@
             this.btnBrowseHelp.Text = "?";
             this.btnBrowseHelp.UseVisualStyleBackColor = true;
             this.btnBrowseHelp.Click += new System.EventHandler(this.btnBrowseHelp_Click);
-            // 
-            // loadTip
-            // 
             // 
             // Form1
             // 
