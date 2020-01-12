@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -65,7 +67,26 @@ namespace BSM
 
         private void btnSaveToProfile_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Are you sure? This will overwrite the selected profile with your current game data.", "Are You Sure?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            DialogResult overwrite = MessageBox.Show("Are you sure? This will overwrite the selected profile with your current game data.", "Are You Sure?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+            if (overwrite == DialogResult.Yes)
+            {
+                string filename = dataPath + "backup_current_to_hundred.py";
+                Process p = new Process();
+                p.StartInfo = new ProcessStartInfo(@"C:\\Users\\" + username + "\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Python 3.8")
+                {
+                    RedirectStandardOutput = true,
+                    UseShellExecute = false,
+                    CreateNoWindow = true
+                };
+                p.StartInfo.Verb = "runas";
+                p.Start();
+
+                string output = p.StandardOutput.ReadToEnd();
+                p.WaitForExit();
+                Console.WriteLine(output);
+                Console.ReadLine();
+            }
         }
 
         private void btnLoadProfile_Click(object sender, EventArgs e)
