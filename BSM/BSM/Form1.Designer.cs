@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.tbPath = new System.Windows.Forms.TextBox();
@@ -37,9 +38,18 @@
             this.cbxProfile = new System.Windows.Forms.ComboBox();
             this.btnLoadProfile = new System.Windows.Forms.Button();
             this.btnSaveToProfile = new System.Windows.Forms.Button();
-            this.btnWipeProfile = new System.Windows.Forms.Button();
             this.btnProfileHelp = new System.Windows.Forms.Button();
             this.pbSplashImage = new System.Windows.Forms.PictureBox();
+            this.btnBrowseBoneworks = new System.Windows.Forms.Button();
+            this.btnBrowseBSM = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.btnBrowseHelp = new System.Windows.Forms.Button();
+            this.loadTip = new System.Windows.Forms.ToolTip(this.components);
+            this.saveTip = new System.Windows.Forms.ToolTip(this.components);
+            this.updateTip = new System.Windows.Forms.ToolTip(this.components);
+            this.browseBoneworksTip = new System.Windows.Forms.ToolTip(this.components);
+            this.browseBSMTip = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pbSplashImage)).BeginInit();
             this.SuspendLayout();
             // 
@@ -76,6 +86,7 @@
             this.btnUpdate.Size = new System.Drawing.Size(57, 23);
             this.btnUpdate.TabIndex = 3;
             this.btnUpdate.Text = "Update";
+            this.updateTip.SetToolTip(this.btnUpdate, "Will update BSM\'s saved path to your currently entered path");
             this.btnUpdate.UseVisualStyleBackColor = true;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
@@ -113,30 +124,23 @@
             // 
             this.btnLoadProfile.Location = new System.Drawing.Point(126, 108);
             this.btnLoadProfile.Name = "btnLoadProfile";
-            this.btnLoadProfile.Size = new System.Drawing.Size(86, 23);
+            this.btnLoadProfile.Size = new System.Drawing.Size(148, 23);
             this.btnLoadProfile.TabIndex = 7;
             this.btnLoadProfile.Text = "Load Profile";
+            this.loadTip.SetToolTip(this.btnLoadProfile, "Will load your selected profile into boneworks, overwriting boneworks data");
             this.btnLoadProfile.UseVisualStyleBackColor = true;
             this.btnLoadProfile.Click += new System.EventHandler(this.btnLoadProfile_Click);
             // 
             // btnSaveToProfile
             // 
-            this.btnSaveToProfile.Location = new System.Drawing.Point(218, 108);
+            this.btnSaveToProfile.Location = new System.Drawing.Point(283, 108);
             this.btnSaveToProfile.Name = "btnSaveToProfile";
-            this.btnSaveToProfile.Size = new System.Drawing.Size(100, 23);
+            this.btnSaveToProfile.Size = new System.Drawing.Size(148, 23);
             this.btnSaveToProfile.TabIndex = 8;
             this.btnSaveToProfile.Text = "Save To Profile";
+            this.saveTip.SetToolTip(this.btnSaveToProfile, "Will download boneworks save data to this profile, overwriting it");
             this.btnSaveToProfile.UseVisualStyleBackColor = true;
             this.btnSaveToProfile.Click += new System.EventHandler(this.btnSaveToProfile_Click);
-            // 
-            // btnWipeProfile
-            // 
-            this.btnWipeProfile.Location = new System.Drawing.Point(324, 108);
-            this.btnWipeProfile.Name = "btnWipeProfile";
-            this.btnWipeProfile.Size = new System.Drawing.Size(107, 23);
-            this.btnWipeProfile.TabIndex = 9;
-            this.btnWipeProfile.Text = "Wipe Profile Data";
-            this.btnWipeProfile.UseVisualStyleBackColor = true;
             // 
             // btnProfileHelp
             // 
@@ -157,15 +161,74 @@
             this.pbSplashImage.TabIndex = 11;
             this.pbSplashImage.TabStop = false;
             // 
+            // btnBrowseBoneworks
+            // 
+            this.btnBrowseBoneworks.Location = new System.Drawing.Point(12, 445);
+            this.btnBrowseBoneworks.Name = "btnBrowseBoneworks";
+            this.btnBrowseBoneworks.Size = new System.Drawing.Size(200, 23);
+            this.btnBrowseBoneworks.TabIndex = 12;
+            this.btnBrowseBoneworks.Text = "Browse Boneworks Data";
+            this.browseBoneworksTip.SetToolTip(this.btnBrowseBoneworks, "Will open your saved boneworks path in file explorer");
+            this.btnBrowseBoneworks.UseVisualStyleBackColor = true;
+            // 
+            // btnBrowseBSM
+            // 
+            this.btnBrowseBSM.Location = new System.Drawing.Point(256, 445);
+            this.btnBrowseBSM.Name = "btnBrowseBSM";
+            this.btnBrowseBSM.Size = new System.Drawing.Size(203, 23);
+            this.btnBrowseBSM.TabIndex = 13;
+            this.btnBrowseBSM.Text = "Browse BSM Data";
+            this.browseBSMTip.SetToolTip(this.btnBrowseBSM, "Will open BSM\'s data folder in file explorer");
+            this.btnBrowseBSM.UseVisualStyleBackColor = true;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(12, 471);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(145, 13);
+            this.label4.TabIndex = 14;
+            this.label4.Text = "BSM v1.0 Ryan Zmuda 2020";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.label5.Location = new System.Drawing.Point(301, 471);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(158, 13);
+            this.label5.TabIndex = 15;
+            this.label5.Text = "Click here if youre having issues";
+            this.label5.Click += new System.EventHandler(this.label5_Click);
+            // 
+            // btnBrowseHelp
+            // 
+            this.btnBrowseHelp.Location = new System.Drawing.Point(218, 445);
+            this.btnBrowseHelp.Name = "btnBrowseHelp";
+            this.btnBrowseHelp.Size = new System.Drawing.Size(32, 23);
+            this.btnBrowseHelp.TabIndex = 16;
+            this.btnBrowseHelp.Text = "?";
+            this.btnBrowseHelp.UseVisualStyleBackColor = true;
+            this.btnBrowseHelp.Click += new System.EventHandler(this.btnBrowseHelp_Click);
+            // 
+            // loadTip
+            // 
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.ClientSize = new System.Drawing.Size(473, 450);
+            this.ClientSize = new System.Drawing.Size(473, 497);
+            this.Controls.Add(this.btnBrowseHelp);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.btnBrowseBSM);
+            this.Controls.Add(this.btnBrowseBoneworks);
             this.Controls.Add(this.pbSplashImage);
             this.Controls.Add(this.btnProfileHelp);
-            this.Controls.Add(this.btnWipeProfile);
             this.Controls.Add(this.btnSaveToProfile);
             this.Controls.Add(this.btnLoadProfile);
             this.Controls.Add(this.cbxProfile);
@@ -197,9 +260,18 @@
         private System.Windows.Forms.ComboBox cbxProfile;
         private System.Windows.Forms.Button btnLoadProfile;
         private System.Windows.Forms.Button btnSaveToProfile;
-        private System.Windows.Forms.Button btnWipeProfile;
         private System.Windows.Forms.Button btnProfileHelp;
         private System.Windows.Forms.PictureBox pbSplashImage;
+        private System.Windows.Forms.Button btnBrowseBoneworks;
+        private System.Windows.Forms.Button btnBrowseBSM;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button btnBrowseHelp;
+        private System.Windows.Forms.ToolTip loadTip;
+        private System.Windows.Forms.ToolTip saveTip;
+        private System.Windows.Forms.ToolTip updateTip;
+        private System.Windows.Forms.ToolTip browseBoneworksTip;
+        private System.Windows.Forms.ToolTip browseBSMTip;
     }
 }
 

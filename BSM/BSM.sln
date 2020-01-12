@@ -5,8 +5,6 @@ VisualStudioVersion = 15.0.28307.271
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BSM", "BSM\BSM.csproj", "{5082C931-689A-49FE-B78F-BEA1214E283A}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "BSM Installer", "BSM Installer\BSM Installer.vdproj", "{EA7111F4-6F56-43C7-A6C0-1729461D4460}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,8 +15,6 @@ Global
 		{5082C931-689A-49FE-B78F-BEA1214E283A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5082C931-689A-49FE-B78F-BEA1214E283A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5082C931-689A-49FE-B78F-BEA1214E283A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{EA7111F4-6F56-43C7-A6C0-1729461D4460}.Debug|Any CPU.ActiveCfg = Debug
-		{EA7111F4-6F56-43C7-A6C0-1729461D4460}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
