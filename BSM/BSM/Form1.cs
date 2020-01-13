@@ -57,7 +57,7 @@ namespace BSM
                 tbPath.Text = resourcesPath.Trim('\n', '\r');
                 if (String.IsNullOrEmpty(tbPath.Text))
                 {
-                    username = Environment.UserName;
+                    username = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
                     tbPath.Text = "C:\\Users\\" + username + "\\AppData\\LocalLow\\Stress Level Zero\\BONEWORKS\\resources1.dat";
                     string[] userPath = { tbPath.Text };
                     File.WriteAllLines(dataPath + "saved_path.txt", userPath);
@@ -77,7 +77,7 @@ namespace BSM
             personalpath = dataPath + "\\personal_save\\resources1.dat";
 
             //Window Settings and set startup values and images
-            username = Environment.UserName;
+            username = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.Icon = new Icon(dataPath + "application_icon.ico");
             cbxProfile.SelectedText = "personal save";
