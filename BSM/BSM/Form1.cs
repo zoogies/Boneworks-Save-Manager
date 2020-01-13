@@ -58,7 +58,7 @@ namespace BSM
                 if (String.IsNullOrEmpty(tbPath.Text))
                 {
                     username = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
-                    tbPath.Text = "C:\\Users\\" + username + "\\AppData\\LocalLow\\Stress Level Zero\\BONEWORKS\\resources1.dat";
+                    tbPath.Text = username + "\\AppData\\LocalLow\\Stress Level Zero\\BONEWORKS\\resources1.dat";
                     string[] userPath = { tbPath.Text };
                     File.WriteAllLines(dataPath + "saved_path.txt", userPath);
                     MessageBox.Show("You have yet to set the save path to boneworks, this is the auto assumed path. Click the ? to see more information and double check this path before clicking update.", "Auto Assume Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -85,7 +85,7 @@ namespace BSM
             tbPath.Text = resourcesPath.Trim('\n', '\r');
             if (String.IsNullOrEmpty(tbPath.Text))
             {
-                tbPath.Text = "C:\\Users\\" + username + "\\AppData\\LocalLow\\Stress Level Zero\\BONEWORKS\\resources1.dat";
+                tbPath.Text = username + "\\AppData\\LocalLow\\Stress Level Zero\\BONEWORKS\\resources1.dat";
                 string[] userPath = { tbPath.Text };
                 File.WriteAllLines(dataPath + "saved_path.txt", userPath);
                 MessageBox.Show("You have yet to set the save path to boneworks, this is the auto assumed path. Click the ? to see more information and double check this path before clicking update.", "Auto Assume Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
