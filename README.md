@@ -1,4 +1,4 @@
 # Boneworks-Save-Manager
 A save manager to switch between save data in boneworks, allows you to utilize multiple saves.
-# CURRENTLY UNFINISHED DO NOT DOWNLOAD
-## Please take a look at the wiki page for more information and download instructrions
+## Download under the "releases" tab
+## Please look at the wiki for installation and usage information or if you're having a hard time.
