@@ -15,6 +15,12 @@
     {
         "Entry"
         {
+        "MsmKey" = "8:_0449FA73A4C14427A59DAB89AA90FEFA"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_1801F1BD092A45828EBB6122C0F813FA"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -23,12 +29,6 @@
         {
         "MsmKey" = "8:_64E59BC5B7417B5EDDF5F792772B8EE7"
         "OwnerKey" = "8:_1801F1BD092A45828EBB6122C0F813FA"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_9C5A9B292133436798100910ADEE76F4"
-        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -138,6 +138,26 @@
         }
         "File"
         {
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_0449FA73A4C14427A59DAB89AA90FEFA"
+            {
+            "SourcePath" = "8:Z:\\1. DEEP STORAGE\\L\\BSM\\application_icon.ico"
+            "TargetName" = "8:application_icon.ico"
+            "Tag" = "8:"
+            "Folder" = "8:_9A5B54AD6BB64887A90500652D7D88F0"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_64E59BC5B7417B5EDDF5F792772B8EE7"
             {
             "AssemblyRegister" = "3:1"
@@ -145,6 +165,11 @@
             "AssemblyAsmDisplayName" = "8:System.Net.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
                 "ScatterAssemblies"
                 {
+                    "_64E59BC5B7417B5EDDF5F792772B8EE7"
+                    {
+                    "Name" = "8:System.Net.Http.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:System.Net.Http.dll"
             "TargetName" = "8:"
@@ -162,26 +187,6 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_9C5A9B292133436798100910ADEE76F4"
-            {
-            "SourcePath" = "8:..\\..\\..\\..\\..\\Desktop\\BSM\\application_icon.ico"
-            "TargetName" = "8:application_icon.ico"
-            "Tag" = "8:"
-            "Folder" = "8:_9A5B54AD6BB64887A90500652D7D88F0"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
         }
@@ -383,7 +388,7 @@
             "Target" = "8:_1801F1BD092A45828EBB6122C0F813FA"
             "Folder" = "8:_E473DCEF8CC4404B8BF08841B6D55F24"
             "WorkingFolder" = "8:_9A5B54AD6BB64887A90500652D7D88F0"
-            "Icon" = "8:_9C5A9B292133436798100910ADEE76F4"
+            "Icon" = "8:_0449FA73A4C14427A59DAB89AA90FEFA"
             "Feature" = "8:"
             }
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_5F3B54481210421FAE7E68FF983A9848"
@@ -397,7 +402,7 @@
             "Target" = "8:_1801F1BD092A45828EBB6122C0F813FA"
             "Folder" = "8:_64DCDF57C96D4A1DB0D605D354A95006"
             "WorkingFolder" = "8:_9A5B54AD6BB64887A90500652D7D88F0"
-            "Icon" = "8:_9C5A9B292133436798100910ADEE76F4"
+            "Icon" = "8:_0449FA73A4C14427A59DAB89AA90FEFA"
             "Feature" = "8:"
             }
         }

@@ -90,7 +90,7 @@
             this.btnUpdate.Text = "Update";
             this.updateTip.SetToolTip(this.btnUpdate, "Will update BSM\'s saved path to your currently entered path");
             this.btnUpdate.UseVisualStyleBackColor = true;
-            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            this.btnUpdate.Click += new System.EventHandler(this.BtnUpdate_Click);
             // 
             // btnPathHelp
             // 
@@ -100,7 +100,7 @@
             this.btnPathHelp.TabIndex = 4;
             this.btnPathHelp.Text = "?";
             this.btnPathHelp.UseVisualStyleBackColor = true;
-            this.btnPathHelp.Click += new System.EventHandler(this.btnPathHelp_Click);
+            this.btnPathHelp.Click += new System.EventHandler(this.BtnPathHelp_Click);
             // 
             // label3
             // 
@@ -132,7 +132,7 @@
             this.btnLoadProfile.Text = "Load Profile";
             this.loadTip.SetToolTip(this.btnLoadProfile, "Will load your selected profile into boneworks, overwriting boneworks data");
             this.btnLoadProfile.UseVisualStyleBackColor = true;
-            this.btnLoadProfile.Click += new System.EventHandler(this.btnLoadProfile_Click);
+            this.btnLoadProfile.Click += new System.EventHandler(this.BtnLoadProfile_Click);
             // 
             // btnSaveToProfile
             // 
@@ -143,7 +143,7 @@
             this.btnSaveToProfile.Text = "Save To Profile";
             this.saveTip.SetToolTip(this.btnSaveToProfile, "Will download boneworks save data to this profile, overwriting it");
             this.btnSaveToProfile.UseVisualStyleBackColor = true;
-            this.btnSaveToProfile.Click += new System.EventHandler(this.btnSaveToProfile_Click);
+            this.btnSaveToProfile.Click += new System.EventHandler(this.BtnSaveToProfile_Click);
             // 
             // btnProfileHelp
             // 
@@ -153,7 +153,7 @@
             this.btnProfileHelp.TabIndex = 10;
             this.btnProfileHelp.Text = "?";
             this.btnProfileHelp.UseVisualStyleBackColor = true;
-            this.btnProfileHelp.Click += new System.EventHandler(this.btnProfileHelp_Click);
+            this.btnProfileHelp.Click += new System.EventHandler(this.BtnProfileHelp_Click);
             // 
             // pbSplashImage
             // 
@@ -173,7 +173,7 @@
             this.btnBrowseBoneworks.Text = "Browse BONEWORKS Data";
             this.browseBoneworksTip.SetToolTip(this.btnBrowseBoneworks, "Will open your saved boneworks path in file explorer");
             this.btnBrowseBoneworks.UseVisualStyleBackColor = true;
-            this.btnBrowseBoneworks.Click += new System.EventHandler(this.btnBrowseBoneworks_Click);
+            this.btnBrowseBoneworks.Click += new System.EventHandler(this.BtnBrowseBoneworks_Click);
             // 
             // btnBrowseBSM
             // 
@@ -184,7 +184,7 @@
             this.btnBrowseBSM.Text = "Browse BSM Data";
             this.browseBSMTip.SetToolTip(this.btnBrowseBSM, "Will open BSM\'s data folder in file explorer");
             this.btnBrowseBSM.UseVisualStyleBackColor = true;
-            this.btnBrowseBSM.Click += new System.EventHandler(this.btnBrowseBSM_Click);
+            this.btnBrowseBSM.Click += new System.EventHandler(this.BtnBrowseBSM_Click);
             // 
             // label4
             // 
@@ -208,7 +208,7 @@
             this.label5.Size = new System.Drawing.Size(160, 13);
             this.label5.TabIndex = 15;
             this.label5.Text = "Click here if you\'re having issues";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
+            this.label5.Click += new System.EventHandler(this.Label5_Click);
             // 
             // btnBrowseHelp
             // 
@@ -218,7 +218,7 @@
             this.btnBrowseHelp.TabIndex = 16;
             this.btnBrowseHelp.Text = "?";
             this.btnBrowseHelp.UseVisualStyleBackColor = true;
-            this.btnBrowseHelp.Click += new System.EventHandler(this.btnBrowseHelp_Click);
+            this.btnBrowseHelp.Click += new System.EventHandler(this.BtnBrowseHelp_Click);
             // 
             // Form1
             // 

@@ -66,8 +66,8 @@ namespace BSM
                 resourcesPath = File.ReadAllText(dataPath + "saved_path.txt");
                 sandboxpath = dataPath + "\\sandbox_save\\resources1.dat";
                 personalpath = dataPath + "\\personal_save\\resources1.dat";
-                File.Create(sandboxpath + "resources1.dat").Dispose();
-                File.Create(personalpath + "reources1.dat").Dispose();
+                File.Create(sandboxpath).Dispose();
+                File.Create(personalpath).Dispose();
                 MessageBox.Show("Created BSM directory and downloaded neccessary images and files.", "Application Directory Created", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
@@ -92,24 +92,24 @@ namespace BSM
             }
         }
 
-        private void btnPathHelp_Click(object sender, EventArgs e)
+        private void BtnPathHelp_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Copy the path to your game save data here, it should look something like:\nC:\\Users\\YOUR USER HERE\\AppData\\LocalLow\\Stress Level Zero\\BONEWORKS\\resources1.dat", "Help Window", MessageBoxButtons.OK, MessageBoxIcon.Question);
         }
 
-        private void btnUpdate_Click(object sender, EventArgs e)
+        private void BtnUpdate_Click(object sender, EventArgs e)
         {
             string[] userPath = { tbPath.Text };
             File.WriteAllLines(dataPath + "saved_path.txt", userPath);
             MessageBox.Show("Updated save path to currently entered path.", "Help Window", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-        private void btnProfileHelp_Click(object sender, EventArgs e)
+        private void BtnProfileHelp_Click(object sender, EventArgs e)
         {
             MessageBox.Show("There are 2 profiles, one for you to back up your personal save to, and the other is a 100% unlock save that you can load for sandbox mode. Please read the wiki on github for more information if needed.", "Help Window", MessageBoxButtons.OK, MessageBoxIcon.Question);
         }
 
-        private void btnSaveToProfile_Click(object sender, EventArgs e)
+        private void BtnSaveToProfile_Click(object sender, EventArgs e)
         {
             DialogResult overwrite = MessageBox.Show("Are you sure? This will overwrite the selected profile with your current game data.", "Are You Sure?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
@@ -161,7 +161,7 @@ namespace BSM
             }
         }
 
-        private void btnLoadProfile_Click(object sender, EventArgs e)
+        private void BtnLoadProfile_Click(object sender, EventArgs e)
         {
             DialogResult overwrite = MessageBox.Show("Are you sure? This will overwrite your selected profiles data with the games save data.", "Are You Sure?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (cbxProfile.Text == "sandbox save")
@@ -212,22 +212,22 @@ namespace BSM
             }
         }
 
-        private void btnBrowseHelp_Click(object sender, EventArgs e)
+        private void BtnBrowseHelp_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Both of these browse buttons can be used to verify integrity of both BSM and Boneworks files. Use these if you are getting errors when backing up or loading save profiles.", "Help Window", MessageBoxButtons.OK, MessageBoxIcon.Question);
         }
 
-        private void label5_Click(object sender, EventArgs e)
+        private void Label5_Click(object sender, EventArgs e)
         {
             Process.Start("https://github.com/Yoyolick/Boneworks-Save-Manager/issues");
         }
 
-        private void btnBrowseBoneworks_Click(object sender, EventArgs e)
+        private void BtnBrowseBoneworks_Click(object sender, EventArgs e)
         {
             Process.Start("explorer.exe", "C:\\Users\\" + username + "\\AppData\\LocalLow\\Stress Level Zero\\BONEWORKS");
         }
 
-        private void btnBrowseBSM_Click(object sender, EventArgs e)
+        private void BtnBrowseBSM_Click(object sender, EventArgs e)
         {
             Process.Start("explorer.exe", dataPath);
         }
