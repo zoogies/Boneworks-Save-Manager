@@ -51,7 +51,7 @@ namespace BSM
                 }
                 using (WebClient client = new WebClient())
                 {
-                    client.DownloadFile("https://camo.githubusercontent.com/d327cb4332077b1999e18c1cc8d049529d2883e8/68747470733a2f2f7777772e6765656b792d676164676574732e636f6d2f77702d636f6e74656e742f75706c6f6164732f323031392f31312f426f6e65776f726b732d56522d47616d652e6a7067", dataPath + "\\splash_image.jpg");
+                    client.DownloadFile("https://pbs.twimg.com/media/ENEpsVpWwAkpS76.jpg", dataPath + "\\splash_image.jpg");
                 }
                 resourcesPath = File.ReadAllText(dataPath + "saved_path.txt");
                 tbPath.Text = resourcesPath.Trim('\n', '\r');
