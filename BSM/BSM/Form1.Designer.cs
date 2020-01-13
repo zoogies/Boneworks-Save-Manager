@@ -205,9 +205,9 @@
             this.label5.ForeColor = System.Drawing.Color.White;
             this.label5.Location = new System.Drawing.Point(301, 471);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(158, 13);
+            this.label5.Size = new System.Drawing.Size(160, 13);
             this.label5.TabIndex = 15;
-            this.label5.Text = "Click here if youre having issues";
+            this.label5.Text = "Click here if you\'re having issues";
             this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // btnBrowseHelp

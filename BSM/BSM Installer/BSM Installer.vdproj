@@ -100,6 +100,14 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.6.1"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.6.1 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.6.1"
+                    }
+                }
             }
         }
     }
@@ -137,11 +145,6 @@
             "AssemblyAsmDisplayName" = "8:System.Net.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
                 "ScatterAssemblies"
                 {
-                    "_64E59BC5B7417B5EDDF5F792772B8EE7"
-                    {
-                    "Name" = "8:System.Net.Http.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:System.Net.Http.dll"
             "TargetName" = "8:"
@@ -264,7 +267,7 @@
         "Subject" = "8:"
         "ARPCONTACT" = "8:Ryan Zmuda"
         "Keywords" = "8:"
-        "ARPCOMMENTS" = "8:A Boneworks Save Manager"
+        "ARPCOMMENTS" = "8:A BONEWORKS Save Manager"
         "ARPURLINFOABOUT" = "8:https://github.com/Yoyolick/Boneworks-Save-Manager"
         "ARPPRODUCTICON" = "8:"
         "ARPIconIndex" = "3:0"

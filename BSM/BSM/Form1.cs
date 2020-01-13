@@ -66,8 +66,8 @@ namespace BSM
                 resourcesPath = File.ReadAllText(dataPath + "saved_path.txt");
                 sandboxpath = dataPath + "\\sandbox_save\\resources1.dat";
                 personalpath = dataPath + "\\personal_save\\resources1.dat";
-                File.Copy(resourcesPath, sandboxpath, true);
-                File.Copy(resourcesPath, personalpath, true);
+                File.Create(sandboxpath + "resources1.dat").Dispose();
+                File.Create(personalpath + "reources1.dat").Dispose();
                 MessageBox.Show("Created BSM directory and downloaded neccessary images and files.", "Application Directory Created", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
@@ -120,6 +120,7 @@ namespace BSM
                     if (File.Exists(resourcesPath) && File.Exists(sandboxpath))
                     {
                         File.Copy(resourcesPath, sandboxpath, true);
+                        MessageBox.Show("File Transfer Sucessful", "Sucess", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else if (!File.Exists(resourcesPath))
                     {
@@ -142,6 +143,7 @@ namespace BSM
                     if (File.Exists(resourcesPath) && File.Exists(personalpath))
                     {
                         File.Copy(resourcesPath, personalpath, true);
+                        MessageBox.Show("File Transfer Sucessful", "Sucess", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else if (!File.Exists(resourcesPath))
                     {
@@ -169,6 +171,7 @@ namespace BSM
                     if (File.Exists(resourcesPath) && File.Exists(sandboxpath))
                     {
                         File.Copy(sandboxpath, resourcesPath, true);
+                        MessageBox.Show("File Transfer Sucessful", "Sucess", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else if (!File.Exists(resourcesPath))
                     {
@@ -191,6 +194,7 @@ namespace BSM
                     if (File.Exists(resourcesPath) && File.Exists(personalpath))
                     {
                         File.Copy(personalpath, resourcesPath, true);
+                        MessageBox.Show("File Transfer Sucessful", "Sucess", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else if (!File.Exists(resourcesPath))
                     {
