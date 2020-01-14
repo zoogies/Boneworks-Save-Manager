@@ -50,6 +50,7 @@
             this.updateTip = new System.Windows.Forms.ToolTip(this.components);
             this.browseBoneworksTip = new System.Windows.Forms.ToolTip(this.components);
             this.browseBSMTip = new System.Windows.Forms.ToolTip(this.components);
+            this.btnOptions = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pbSplashImage)).BeginInit();
             this.SuspendLayout();
             // 
@@ -58,7 +59,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(12, 9);
+            this.label1.Location = new System.Drawing.Point(12, 3);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(443, 37);
             this.label1.TabIndex = 0;
@@ -68,7 +69,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(9, 51);
+            this.label2.Location = new System.Drawing.Point(9, 45);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(168, 13);
             this.label2.TabIndex = 1;
@@ -76,14 +77,14 @@
             // 
             // tbPath
             // 
-            this.tbPath.Location = new System.Drawing.Point(12, 68);
+            this.tbPath.Location = new System.Drawing.Point(12, 62);
             this.tbPath.Name = "tbPath";
             this.tbPath.Size = new System.Drawing.Size(356, 20);
             this.tbPath.TabIndex = 2;
             // 
             // btnUpdate
             // 
-            this.btnUpdate.Location = new System.Drawing.Point(374, 66);
+            this.btnUpdate.Location = new System.Drawing.Point(374, 60);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(57, 23);
             this.btnUpdate.TabIndex = 3;
@@ -94,7 +95,7 @@
             // 
             // btnPathHelp
             // 
-            this.btnPathHelp.Location = new System.Drawing.Point(437, 66);
+            this.btnPathHelp.Location = new System.Drawing.Point(437, 60);
             this.btnPathHelp.Name = "btnPathHelp";
             this.btnPathHelp.Size = new System.Drawing.Size(22, 23);
             this.btnPathHelp.TabIndex = 4;
@@ -106,7 +107,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(9, 94);
+            this.label3.Location = new System.Drawing.Point(9, 88);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(66, 13);
             this.label3.TabIndex = 5;
@@ -118,14 +119,14 @@
             this.cbxProfile.Items.AddRange(new object[] {
             "personal save",
             "sandbox save"});
-            this.cbxProfile.Location = new System.Drawing.Point(12, 110);
+            this.cbxProfile.Location = new System.Drawing.Point(12, 104);
             this.cbxProfile.Name = "cbxProfile";
             this.cbxProfile.Size = new System.Drawing.Size(108, 21);
             this.cbxProfile.TabIndex = 6;
             // 
             // btnLoadProfile
             // 
-            this.btnLoadProfile.Location = new System.Drawing.Point(126, 108);
+            this.btnLoadProfile.Location = new System.Drawing.Point(126, 102);
             this.btnLoadProfile.Name = "btnLoadProfile";
             this.btnLoadProfile.Size = new System.Drawing.Size(148, 23);
             this.btnLoadProfile.TabIndex = 7;
@@ -136,7 +137,7 @@
             // 
             // btnSaveToProfile
             // 
-            this.btnSaveToProfile.Location = new System.Drawing.Point(283, 108);
+            this.btnSaveToProfile.Location = new System.Drawing.Point(283, 102);
             this.btnSaveToProfile.Name = "btnSaveToProfile";
             this.btnSaveToProfile.Size = new System.Drawing.Size(148, 23);
             this.btnSaveToProfile.TabIndex = 8;
@@ -147,7 +148,7 @@
             // 
             // btnProfileHelp
             // 
-            this.btnProfileHelp.Location = new System.Drawing.Point(437, 108);
+            this.btnProfileHelp.Location = new System.Drawing.Point(437, 102);
             this.btnProfileHelp.Name = "btnProfileHelp";
             this.btnProfileHelp.Size = new System.Drawing.Size(22, 23);
             this.btnProfileHelp.TabIndex = 10;
@@ -157,7 +158,7 @@
             // 
             // pbSplashImage
             // 
-            this.pbSplashImage.Location = new System.Drawing.Point(12, 147);
+            this.pbSplashImage.Location = new System.Drawing.Point(12, 141);
             this.pbSplashImage.Name = "pbSplashImage";
             this.pbSplashImage.Size = new System.Drawing.Size(447, 291);
             this.pbSplashImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -166,9 +167,9 @@
             // 
             // btnBrowseBoneworks
             // 
-            this.btnBrowseBoneworks.Location = new System.Drawing.Point(12, 445);
+            this.btnBrowseBoneworks.Location = new System.Drawing.Point(12, 439);
             this.btnBrowseBoneworks.Name = "btnBrowseBoneworks";
-            this.btnBrowseBoneworks.Size = new System.Drawing.Size(200, 23);
+            this.btnBrowseBoneworks.Size = new System.Drawing.Size(165, 23);
             this.btnBrowseBoneworks.TabIndex = 12;
             this.btnBrowseBoneworks.Text = "Browse BONEWORKS Data";
             this.browseBoneworksTip.SetToolTip(this.btnBrowseBoneworks, "Will open your saved boneworks path in file explorer");
@@ -177,9 +178,9 @@
             // 
             // btnBrowseBSM
             // 
-            this.btnBrowseBSM.Location = new System.Drawing.Point(256, 445);
+            this.btnBrowseBSM.Location = new System.Drawing.Point(183, 439);
             this.btnBrowseBSM.Name = "btnBrowseBSM";
-            this.btnBrowseBSM.Size = new System.Drawing.Size(203, 23);
+            this.btnBrowseBSM.Size = new System.Drawing.Size(137, 23);
             this.btnBrowseBSM.TabIndex = 13;
             this.btnBrowseBSM.Text = "Browse BSM Data";
             this.browseBSMTip.SetToolTip(this.btnBrowseBSM, "Will open BSM\'s data folder in file explorer");
@@ -191,7 +192,7 @@
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(12, 471);
+            this.label4.Location = new System.Drawing.Point(12, 465);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(145, 13);
             this.label4.TabIndex = 14;
@@ -203,7 +204,7 @@
             this.label5.Cursor = System.Windows.Forms.Cursors.Hand;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(301, 471);
+            this.label5.Location = new System.Drawing.Point(301, 465);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(160, 13);
             this.label5.TabIndex = 15;
@@ -212,7 +213,7 @@
             // 
             // btnBrowseHelp
             // 
-            this.btnBrowseHelp.Location = new System.Drawing.Point(218, 445);
+            this.btnBrowseHelp.Location = new System.Drawing.Point(326, 439);
             this.btnBrowseHelp.Name = "btnBrowseHelp";
             this.btnBrowseHelp.Size = new System.Drawing.Size(32, 23);
             this.btnBrowseHelp.TabIndex = 16;
@@ -220,12 +221,23 @@
             this.btnBrowseHelp.UseVisualStyleBackColor = true;
             this.btnBrowseHelp.Click += new System.EventHandler(this.BtnBrowseHelp_Click);
             // 
+            // btnOptions
+            // 
+            this.btnOptions.Location = new System.Drawing.Point(364, 439);
+            this.btnOptions.Name = "btnOptions";
+            this.btnOptions.Size = new System.Drawing.Size(95, 23);
+            this.btnOptions.TabIndex = 17;
+            this.btnOptions.Text = "Options";
+            this.btnOptions.UseVisualStyleBackColor = true;
+            this.btnOptions.Click += new System.EventHandler(this.btnOptions_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.ClientSize = new System.Drawing.Size(473, 497);
+            this.ClientSize = new System.Drawing.Size(473, 489);
+            this.Controls.Add(this.btnOptions);
             this.Controls.Add(this.btnBrowseHelp);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -276,6 +288,7 @@
         private System.Windows.Forms.ToolTip updateTip;
         private System.Windows.Forms.ToolTip browseBoneworksTip;
         private System.Windows.Forms.ToolTip browseBSMTip;
+        private System.Windows.Forms.Button btnOptions;
     }
 }
 

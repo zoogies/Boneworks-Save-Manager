@@ -21,6 +21,7 @@ namespace BSM
         public static string username;
         public static string sandboxpath;
         public static string personalpath;
+        public static string theme;
 
         public Form1()
         {
@@ -30,66 +31,162 @@ namespace BSM
         private void Form1_Load(object sender, EventArgs e)
         {
             //Code by Ryan Zmuda 2020
-            //Reference:
-            //Application data path: C:\Users\swoos\Documents\BSM
-            //TODO create backups of save data in each directory and create directories and create images on launch
 
             //set data path for use in creating files if not present or first launch
             dataPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\BSM\\";
 
             //Create application data directories if not present as well as download required images
-            if (!Directory.Exists(dataPath))
-            {
-                MessageBox.Show("BSM directory not detected (this occurs on first run). Attempting to download neccesary files.", "Application Directory Missing", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                Directory.CreateDirectory(dataPath);
-                Directory.CreateDirectory(dataPath + "\\personal_save");
-                Directory.CreateDirectory(dataPath + "\\sandbox_save");
-                File.Create(dataPath + "saved_path.txt").Dispose();
-                using (WebClient client = new WebClient())
-                {
-                    client.DownloadFile("http://www.iconj.com/ico/l/u/lufczubxnj.ico", dataPath + "\\application_icon.ico");
-                }
-                using (WebClient client = new WebClient())
-                {
-                    client.DownloadFile("https://pbs.twimg.com/media/ENEpsVpWwAkpS76.jpg", dataPath + "\\splash_image.jpg");
-                }
-                resourcesPath = File.ReadAllText(dataPath + "saved_path.txt");
-                tbPath.Text = resourcesPath.Trim('\n', '\r');
-                if (String.IsNullOrEmpty(tbPath.Text))
-                {
-                    username = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
-                    tbPath.Text = username + "\\AppData\\LocalLow\\Stress Level Zero\\BONEWORKS\\resources1.dat";
-                    string[] userPath = { tbPath.Text };
-                    File.WriteAllLines(dataPath + "saved_path.txt", userPath);
-                    MessageBox.Show("You have yet to set the save path to boneworks, this is the auto assumed path. Click the ? to see more information and double check this path before clicking update.", "Auto Assume Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                resourcesPath = File.ReadAllText(dataPath + "saved_path.txt");
-                sandboxpath = dataPath + "\\sandbox_save\\resources1.dat";
-                personalpath = dataPath + "\\personal_save\\resources1.dat";
-                File.Create(sandboxpath).Dispose();
-                File.Create(personalpath).Dispose();
-                MessageBox.Show("Created BSM directory and downloaded neccessary images and files.", "Application Directory Created", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-
-            //create other paths
-            resourcesPath = System.IO.File.ReadAllText(dataPath + "saved_path.txt");
-            sandboxpath = dataPath + "\\sandbox_save\\resources1.dat";
-            personalpath = dataPath + "\\personal_save\\resources1.dat";
+            ValidateFileSystem();
 
             //Window Settings and set startup values and images
             username = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            var iconpath = dataPath + "application_icon.ico";
             this.Icon = new Icon(dataPath + "application_icon.ico");
             cbxProfile.SelectedText = "personal save";
-            pbSplashImage.Image = Image.FromFile(dataPath + "splash_image.jpg");
+
+            //load theme
+            ThemeLoad();
+        }
+
+        public void ThemeLoad()
+        {
+            //detect theme in text
+            theme = File.ReadAllText(dataPath + "theme.txt");
+            theme = theme.Trim('\n', '\r');
+
+            if (theme == "dark")
+            {
+                pbSplashImage.Image = Image.FromFile(dataPath + "splash_image.jpg");
+                this.BackColor = Color.FromArgb(47, 45, 45);
+                label1.ForeColor = Color.White;
+                label2.ForeColor = Color.White;
+                label3.ForeColor = Color.White;
+                label4.ForeColor = Color.White;
+                label5.ForeColor = Color.White;
+            }
+            if (theme == "light")
+            {
+                pbSplashImage.Image = Image.FromFile(dataPath + "splash_image_light.png");
+                this.BackColor = Color.FromArgb(238, 238, 238);
+                label1.ForeColor = Color.Black;
+                label2.ForeColor = Color.Black;
+                label3.ForeColor = Color.Black;
+                label4.ForeColor = Color.Black;
+                label5.ForeColor = Color.Black;
+            }
+        }
+
+        public void ValidateFileSystem()
+        {
+            //Filestructure
+            //
+            //BSM
+            //+personal_save
+            // +resources1.dat
+            //+sandbox_save
+            // +resources1.dat
+            //+application_icon.ico
+            //+saved_path.txt
+            //+splash_image.jpg
+            //+splash_image_light.jpg
+            //+theme.txt
+
+            //test shit debug
+            var builtsomething = false;
+
+            //directory validation
+            if (!Directory.Exists(dataPath))
+            {
+                Directory.CreateDirectory(dataPath);
+                builtsomething = true;
+            }
+            if (!Directory.Exists(dataPath + "\\personal_save"))
+            {
+                Directory.CreateDirectory(dataPath + "\\personal_save");
+                builtsomething = true;
+            }
+            if (!Directory.Exists(dataPath + "\\sandbox_save"))
+            {
+                Directory.CreateDirectory(dataPath + "\\sandbox_save");
+                builtsomething = true;
+            }
+
+            //file validation
+            if (!File.Exists(dataPath + "\\sandbox_save\\resources1.dat"))
+            {
+                sandboxpath = dataPath + "\\sandbox_save\\resources1.dat";
+                File.Create(sandboxpath).Dispose();
+                builtsomething = true;
+            }
+            if (!File.Exists(dataPath + "\\personal_save\\resources1.dat"))
+            {
+                personalpath = dataPath + "\\personal_save\\resources1.dat";
+                File.Create(personalpath).Dispose();
+                builtsomething = true;
+            }
+            if (!File.Exists(dataPath + "\\application_icon.ico"))
+            {
+                using (WebClient client = new WebClient())
+                {
+                    client.DownloadFile("http://www.iconj.com/ico/l/u/lufczubxnj.ico", dataPath + "\\application_icon.ico");
+                    builtsomething = true;
+                }
+            }
+            if (!File.Exists(dataPath + "\\splash_image.jpg"))
+            {
+                using (WebClient client = new WebClient())
+                {
+                    client.DownloadFile("https://pbs.twimg.com/media/ENEpsVpWwAkpS76.jpg", dataPath + "\\splash_image.jpg");
+                    builtsomething = true;
+                }
+            }
+            if (!File.Exists(dataPath + "\\splash_image_light.png"))
+            {
+                using (WebClient client = new WebClient())
+                {
+                    client.DownloadFile("https://steamcdn-a.akamaihd.net/steam/apps/823500/extras/logo_boneworks.png?t=1576000732", dataPath + "\\splash_image_light.png");
+                    builtsomething = true;
+                }
+            }
+            if (!File.Exists(dataPath + "\\saved_path.txt"))
+            {
+                var savedpath = dataPath + "\\saved_path.txt";
+                File.Create(savedpath).Dispose();
+                builtsomething = true;
+            }
+            if (!File.Exists(dataPath + "\\theme.txt"))
+            {
+                var themepath = dataPath + "\\theme.txt";
+                File.Create(themepath).Dispose();
+                builtsomething = true;
+                string[] theme = {"dark"};
+                File.WriteAllLines(dataPath + "theme.txt", theme);
+            }
+
+            //auto assume boneworks path if not set
+            resourcesPath = File.ReadAllText(dataPath + "saved_path.txt");
             tbPath.Text = resourcesPath.Trim('\n', '\r');
             if (String.IsNullOrEmpty(tbPath.Text))
             {
+                username = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
                 tbPath.Text = username + "\\AppData\\LocalLow\\Stress Level Zero\\BONEWORKS\\resources1.dat";
                 string[] userPath = { tbPath.Text };
                 File.WriteAllLines(dataPath + "saved_path.txt", userPath);
                 MessageBox.Show("You have yet to set the save path to boneworks, this is the auto assumed path. Click the ? to see more information and double check this path before clicking update.", "Auto Assume Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+            resourcesPath = File.ReadAllText(dataPath + "saved_path.txt");
+
+            //check to see if updated and if so notify user
+            if(builtsomething == true)
+            {
+                MessageBox.Show("BSM filesystem rebuilt, this could be because of an update or first time bsm launch", "Filesystem Rebuilt", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
+            //set path variables
+            resourcesPath = System.IO.File.ReadAllText(dataPath + "saved_path.txt");
+            sandboxpath = dataPath + "\\sandbox_save\\resources1.dat";
+            personalpath = dataPath + "\\personal_save\\resources1.dat";
         }
 
         private void BtnPathHelp_Click(object sender, EventArgs e)
@@ -230,6 +327,19 @@ namespace BSM
         private void BtnBrowseBSM_Click(object sender, EventArgs e)
         {
             Process.Start("explorer.exe", dataPath);
+        }
+
+        private void btnOptions_Click(object sender, EventArgs e)
+        {
+            Options optionsPanel = new Options();
+            optionsPanel.Show();
+
+            optionsPanel.btnDone.Click += this.Options_btnDone_Click;
+        }
+        
+        private void Options_btnDone_Click(object sender, EventArgs e)
+        {
+            ThemeLoad();
         }
     }
 }
