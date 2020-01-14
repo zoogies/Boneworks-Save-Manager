@@ -54,6 +54,7 @@ namespace BSM
         private void btnVerifyInteg_Click(object sender, EventArgs e)
         {
             //TODO same as done click detect basically
+            MessageBox.Show("File system checked.","File system checked",MessageBoxButtons.OK,MessageBoxIcon.Information);
         }
 
         private void cbxTheme_SelectedIndexChanged(object sender, EventArgs e)
@@ -61,6 +62,23 @@ namespace BSM
             cbxTheme.Text = cbxTheme.Text.Trim('\n', '\r');
             string[] selectedTheme = { cbxTheme.Text };
             File.WriteAllLines(dataPath + "theme.txt", selectedTheme);
+
+            //detect theme in text
+            var theme = File.ReadAllText(dataPath + "theme.txt");
+            theme = theme.Trim('\n', '\r');
+
+            if (theme == "dark")
+            {
+                this.BackColor = Color.FromArgb(47, 45, 45);
+                label1.ForeColor = Color.White;
+                cbxTheme.Text = "dark";
+            }
+            if (theme == "light")
+            {
+                this.BackColor = Color.FromArgb(238, 238, 238);
+                label1.ForeColor = Color.Black;
+                cbxTheme.Text = "light";
+            }
         }
     }
 }

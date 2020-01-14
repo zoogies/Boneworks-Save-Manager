@@ -96,9 +96,9 @@
         }
 
         #endregion
-        private System.Windows.Forms.ComboBox cbxTheme;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btnVerifyInteg;
         internal System.Windows.Forms.Button btnDone;
+        internal System.Windows.Forms.ComboBox cbxTheme;
+        internal System.Windows.Forms.Button btnVerifyInteg;
     }
 }

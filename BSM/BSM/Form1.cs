@@ -31,6 +31,8 @@ namespace BSM
         private void Form1_Load(object sender, EventArgs e)
         {
             //Code by Ryan Zmuda 2020
+            //TODO:
+            //get application icon for settings and download and apply it in filestructre
 
             //set data path for use in creating files if not present or first launch
             dataPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\BSM\\";
@@ -334,10 +336,16 @@ namespace BSM
             Options optionsPanel = new Options();
             optionsPanel.Show();
 
-            optionsPanel.btnDone.Click += this.Options_btnDone_Click;
+            optionsPanel.cbxTheme.SelectedIndexChanged += this.cbxTheme_SelectedIndexChanged;
+            optionsPanel.btnDone.Click += this.btnVerifyInteg_Click;
         }
-        
-        private void Options_btnDone_Click(object sender, EventArgs e)
+
+        private void btnVerifyInteg_Click(object sender, EventArgs e)
+        {
+            ValidateFileSystem();
+        }
+
+        private void cbxTheme_SelectedIndexChanged(object sender, EventArgs e)
         {
             ThemeLoad();
         }
