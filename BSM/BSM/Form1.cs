@@ -49,6 +49,10 @@ namespace BSM
 
             //load theme
             ThemeLoad();
+
+            //load directories into a list to populate combo box
+            string[] dirs = Directory.GetDirectories(dataPath,"save",SearchOption.TopDirectoryOnly);
+
         }
 
         public void ThemeLoad()
@@ -66,6 +70,8 @@ namespace BSM
                 label3.ForeColor = Color.White;
                 label4.ForeColor = Color.White;
                 label5.ForeColor = Color.White;
+                label6.ForeColor = Color.White;
+                label7.ForeColor = Color.White;
             }
             if (theme == "light")
             {
@@ -76,6 +82,8 @@ namespace BSM
                 label3.ForeColor = Color.Black;
                 label4.ForeColor = Color.Black;
                 label5.ForeColor = Color.Black;
+                label6.ForeColor = Color.Black;
+                label7.ForeColor = Color.Black;
             }
         }
 
