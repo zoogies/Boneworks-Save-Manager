@@ -51,10 +51,11 @@
             this.browseBoneworksTip = new System.Windows.Forms.ToolTip(this.components);
             this.browseBSMTip = new System.Windows.Forms.ToolTip(this.components);
             this.btnOptions = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tbCustomName = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.btnCreateProfile = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
+            this.btnDelete = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pbSplashImage)).BeginInit();
             this.SuspendLayout();
             // 
@@ -120,9 +121,6 @@
             // cbxProfile
             // 
             this.cbxProfile.FormattingEnabled = true;
-            this.cbxProfile.Items.AddRange(new object[] {
-            "personal save",
-            "sandbox save"});
             this.cbxProfile.Location = new System.Drawing.Point(12, 104);
             this.cbxProfile.Name = "cbxProfile";
             this.cbxProfile.Size = new System.Drawing.Size(141, 21);
@@ -132,7 +130,7 @@
             // 
             this.btnLoadProfile.Location = new System.Drawing.Point(159, 102);
             this.btnLoadProfile.Name = "btnLoadProfile";
-            this.btnLoadProfile.Size = new System.Drawing.Size(135, 23);
+            this.btnLoadProfile.Size = new System.Drawing.Size(88, 23);
             this.btnLoadProfile.TabIndex = 7;
             this.btnLoadProfile.Text = "Load Profile";
             this.loadTip.SetToolTip(this.btnLoadProfile, "Will load your selected profile into boneworks, overwriting boneworks data");
@@ -141,9 +139,9 @@
             // 
             // btnSaveToProfile
             // 
-            this.btnSaveToProfile.Location = new System.Drawing.Point(300, 102);
+            this.btnSaveToProfile.Location = new System.Drawing.Point(253, 102);
             this.btnSaveToProfile.Name = "btnSaveToProfile";
-            this.btnSaveToProfile.Size = new System.Drawing.Size(131, 23);
+            this.btnSaveToProfile.Size = new System.Drawing.Size(97, 23);
             this.btnSaveToProfile.TabIndex = 8;
             this.btnSaveToProfile.Text = "Save To Profile";
             this.saveTip.SetToolTip(this.btnSaveToProfile, "Will download boneworks save data to this profile, overwriting it");
@@ -235,12 +233,12 @@
             this.btnOptions.UseVisualStyleBackColor = true;
             this.btnOptions.Click += new System.EventHandler(this.btnOptions_Click);
             // 
-            // textBox1
+            // tbCustomName
             // 
-            this.textBox1.Location = new System.Drawing.Point(8, 179);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(239, 20);
-            this.textBox1.TabIndex = 18;
+            this.tbCustomName.Location = new System.Drawing.Point(12, 179);
+            this.tbCustomName.Name = "tbCustomName";
+            this.tbCustomName.Size = new System.Drawing.Size(235, 20);
+            this.tbCustomName.TabIndex = 18;
             // 
             // label6
             // 
@@ -254,12 +252,13 @@
             // 
             // btnCreateProfile
             // 
-            this.btnCreateProfile.Location = new System.Drawing.Point(253, 178);
+            this.btnCreateProfile.Location = new System.Drawing.Point(257, 178);
             this.btnCreateProfile.Name = "btnCreateProfile";
             this.btnCreateProfile.Size = new System.Drawing.Size(202, 21);
             this.btnCreateProfile.TabIndex = 20;
             this.btnCreateProfile.Text = "Create new profile";
             this.btnCreateProfile.UseVisualStyleBackColor = true;
+            this.btnCreateProfile.Click += new System.EventHandler(this.btnCreateProfile_Click);
             // 
             // label7
             // 
@@ -272,16 +271,27 @@
             this.label7.TabIndex = 21;
             this.label7.Text = "Custom Profiles:";
             // 
+            // btnDelete
+            // 
+            this.btnDelete.Location = new System.Drawing.Point(356, 102);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(75, 23);
+            this.btnDelete.TabIndex = 22;
+            this.btnDelete.Text = "Delete";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(467, 547);
+            this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.btnCreateProfile);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.tbCustomName);
             this.Controls.Add(this.btnOptions);
             this.Controls.Add(this.btnBrowseHelp);
             this.Controls.Add(this.label5);
@@ -334,10 +344,11 @@
         private System.Windows.Forms.ToolTip browseBoneworksTip;
         private System.Windows.Forms.ToolTip browseBSMTip;
         private System.Windows.Forms.Button btnOptions;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox tbCustomName;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button btnCreateProfile;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button btnDelete;
     }
 }
 
