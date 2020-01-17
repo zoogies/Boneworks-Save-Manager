@@ -123,42 +123,37 @@ namespace BSM
 
         private void copyToProfile(string selectedsavepath)
         {
-            if (File.Exists(resourcesPath) && File.Exists(selectedsavepath))
+            //MessageBox.Show(resourcesPath, "Sucess", MessageBoxButtons.OK, MessageBoxIcon.Information); debug
+            //MessageBox.Show(selectedsavepath, "Sucess", MessageBoxButtons.OK, MessageBoxIcon.Information); debug
+
+            if (Directory.Exists(resourcesPath) && Directory.Exists(selectedsavepath))
             {
-                File.Copy(resourcesPath + "\\additional_resources1.dat", selectedsavepath);
-                File.Copy(resourcesPath + "\\additional_resources1.dat.bak", selectedsavepath);
-                File.Copy(resourcesPath + "\\additional_resources2.dat", selectedsavepath);
-                File.Copy(resourcesPath + "\\additional_resources3.dat", selectedsavepath);
-                File.Copy(resourcesPath + "\\additional_resources4.dat", selectedsavepath);
-                File.Copy(resourcesPath + "\\bw1_ArenaPlayer_01.dat", selectedsavepath);
-                File.Copy(resourcesPath + "\\bw1_pInfo_00.dat", selectedsavepath);
-                File.Copy(resourcesPath + "\\bw1_pInfo_01.dat", selectedsavepath);
-                File.Copy(resourcesPath + "\\bw1_pInfo_02.dat", selectedsavepath);
-                File.Copy(resourcesPath + "\\bw1_pInfo_03.dat", selectedsavepath);
-                File.Copy(resourcesPath + "\\bw1_pInfo_04.dat", selectedsavepath);
-                File.Copy(resourcesPath + "\\extraResources1.dat", selectedsavepath);
-                File.Copy(resourcesPath + "\\extraResources2.dat", selectedsavepath);
-                File.Copy(resourcesPath + "\\extraResources3.dat", selectedsavepath);
-                File.Copy(resourcesPath + "\\extraResources4.dat", selectedsavepath);
-                File.Copy(resourcesPath + "\\output_log.txt", selectedsavepath);
-                File.Copy(resourcesPath + "\\resources1.dat", selectedsavepath);
-                File.Copy(resourcesPath + "\\resources2.dat", selectedsavepath);
-                File.Copy(resourcesPath + "\\resources3.dat", selectedsavepath);
-                File.Copy(resourcesPath + "\\resources4.dat", selectedsavepath);
+                File.Copy(resourcesPath + "\\additional_resources1.dat", selectedsavepath + "\\additional_resources1.dat", true);
+                File.Copy(resourcesPath + "\\additional_resources1.dat.bak", selectedsavepath + "\\additional_resources1.dat.bak", true);
+                File.Copy(resourcesPath + "\\additional_resources2.dat", selectedsavepath + "\\additional_resources2.dat", true);
+                File.Copy(resourcesPath + "\\additional_resources3.dat", selectedsavepath + "\\additional_resources3.dat", true);
+                File.Copy(resourcesPath + "\\additional_resources4.dat", selectedsavepath + "\\additional_resources4.dat", true);
+                File.Copy(resourcesPath + "\\bw1_ArenaPlayer_01.dat", selectedsavepath + "\\bw1_ArenaPlayer_01.dat", true);
+                File.Copy(resourcesPath + "\\bw1_pInfo_00.dat", selectedsavepath + "\\bw1_pInfo_00.dat", true);
+                File.Copy(resourcesPath + "\\bw1_pInfo_01.dat", selectedsavepath + "\\bw1_pInfo_01.dat", true);
+                File.Copy(resourcesPath + "\\bw1_pInfo_02.dat", selectedsavepath + "\\bw1_pInfo_02.dat", true);
+                File.Copy(resourcesPath + "\\bw1_pInfo_03.dat", selectedsavepath + "\\bw1_pInfo_03.dat", true);
+                File.Copy(resourcesPath + "\\bw1_pInfo_04.dat", selectedsavepath + "\\bw1_pInfo_04.dat", true);
+                File.Copy(resourcesPath + "\\extraResources1.dat", selectedsavepath + "\\extraResources1.dat", true);
+                File.Copy(resourcesPath + "\\extraResources2.dat", selectedsavepath + "\\extraResources2.dat", true);
+                File.Copy(resourcesPath + "\\extraResources3.dat", selectedsavepath + "\\extraResources3.dat", true);
+                File.Copy(resourcesPath + "\\extraResources4.dat", selectedsavepath + "\\extraResources4.dat", true);
+                File.Copy(resourcesPath + "\\output_log.txt", selectedsavepath + "\\output_log.txt", true);
+                File.Copy(resourcesPath + "\\resources1.dat", selectedsavepath + "\\resources1.dat", true);
+                File.Copy(resourcesPath + "\\resources2.dat", selectedsavepath + "\\resources2.dat", true);
+                File.Copy(resourcesPath + "\\resources3.dat", selectedsavepath + "\\resources3.dat", true);
+                File.Copy(resourcesPath + "\\resources4.dat", selectedsavepath + "\\resources4.dat", true);
 
                 MessageBox.Show("File Transfer Sucessful", "Sucess", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            else if (!File.Exists(resourcesPath))
-            {
-                MessageBox.Show("Your boneworks does not seem to have a resources1 file present. Try launching the game to create it and then attempt again.", "Cant find save file", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else if (!File.Exists(sandboxpath))
-            {
-                MessageBox.Show("Failed to find selected profiles save backup. It may not exist or there may have been an installation program. Try backing up save data to this profile if you believe this is a mistake.", "Cant find save profile data", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
             else
             {
-                MessageBox.Show("Failed to find the boneworks save data and the profile save data. Try creating a new game in boneworks and then exiting as well as backing up a save to this profile.", "Cant find save profile data", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Something went wrong. Try creating a new game in boneworks and then exiting as well as backing up a save to this selected profile.", "Cant find save profile data", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -257,7 +252,7 @@ namespace BSM
             if (String.IsNullOrEmpty(tbPath.Text))
             {
                 username = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
-                tbPath.Text = username + "\\AppData\\LocalLow\\Stress Level Zero\\BONEWORKS\\resources1.dat";
+                tbPath.Text = username + "\\AppData\\LocalLow\\Stress Level Zero\\BONEWORKS";
                 string[] userPath = { tbPath.Text };
                 File.WriteAllLines(dataPath + "saved_path.txt", userPath);
                 MessageBox.Show("You have yet to set the save path to boneworks, this is the auto assumed path. Click the ? to see more information and double check this path before clicking update.", "Auto Assume Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -271,9 +266,10 @@ namespace BSM
             }
 
             //set path variables
-            resourcesPath = System.IO.File.ReadAllText(dataPath + "saved_path.txt");
-            sandboxpath = dataPath + "\\sandbox_save\\resources1.dat";
-            personalpath = dataPath + "\\personal_save\\resources1.dat";
+            resourcesPath = File.ReadAllText(dataPath + "\\saved_path.txt");
+            sandboxpath = dataPath + "\\sandbox_save";
+            personalpath = dataPath + "\\personal_save";
+            resourcesPath = resourcesPath.Replace("\r\n", string.Empty);
         }
 
         private void BtnPathHelp_Click(object sender, EventArgs e)
@@ -295,16 +291,16 @@ namespace BSM
 
         private void BtnSaveToProfile_Click(object sender, EventArgs e)
         {
+            DialogResult overwrite = MessageBox.Show("Are you sure? This will overwrite the selected profile with your current game data.", "Are You Sure?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
             if (cbxProfile.Text == "" || cbxProfile.Text == " ")
             {
                 MessageBox.Show("Select a profile from the drop down menu to use this function", "Select a save profile", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            DialogResult overwrite = MessageBox.Show("Are you sure? This will overwrite the selected profile with your current game data.", "Are You Sure?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-
             if (overwrite == DialogResult.Yes)
             {
-                copyToProfile(cbxProfile.Text.Replace(" ","_"));
+                copyToProfile(dataPath + cbxProfile.Text.Replace(" ","_"));
             }
         }
 
@@ -376,7 +372,7 @@ namespace BSM
 
         private void BtnBrowseBoneworks_Click(object sender, EventArgs e)
         {
-            Process.Start("explorer.exe", "C:\\Users\\" + username + "\\AppData\\LocalLow\\Stress Level Zero\\BONEWORKS");
+            Process.Start("explorer.exe", Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "LocalLow\\Stress Level Zero\\BONEWORKS");
             //TODO fix
         }
 
@@ -417,21 +413,23 @@ namespace BSM
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            if(cbxProfile.Text == "personal save" || cbxProfile.Text == "sandbox save")
-            {
-                MessageBox.Show("This is an application defualt profile, you cannot delete it.", "Protected Profile", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-
             try
             {
+                if (cbxProfile.Text == "personal save" || cbxProfile.Text == "sandbox save")
+                {
+                    MessageBox.Show("This is an application defualt profile, you cannot delete it.", "Protected Profile", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
                 var pathtodelete = cbxProfile.Text.Replace(" ","_");
-                Directory.Delete(dataPath + "\\" + pathtodelete);
+                Directory.Delete(dataPath + pathtodelete,true);
                 MessageBox.Show("Deleted profile sucessfully.", "Deleted", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                LoadCbx();
 
             }
             catch
             {
-                MessageBox.Show("Something went wrong", "Something went wrong", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                var pathtodelete = cbxProfile.Text.Replace(" ", "_");
+                MessageBox.Show("An error occured. Attempted to delete: " + dataPath + pathtodelete + "Restarting BSM usually fixes this.", "Something went wrong", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
