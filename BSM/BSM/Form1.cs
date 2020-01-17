@@ -157,6 +157,39 @@ namespace BSM
             }
         }
 
+        private void copyToGame(string selectedsavepath)
+        {
+            if (Directory.Exists(resourcesPath) && Directory.Exists(selectedsavepath))
+            {
+                File.Copy(selectedsavepath + "\\additional_resources1.dat", resourcesPath + "\\additional_resources1.dat", true);
+                File.Copy(selectedsavepath + "\\additional_resources1.dat.bak", resourcesPath + "\\additional_resources1.dat.bak", true);
+                File.Copy(selectedsavepath + "\\additional_resources2.dat", resourcesPath + "\\additional_resources2.dat", true);
+                File.Copy(selectedsavepath + "\\additional_resources3.dat", resourcesPath + "\\additional_resources3.dat", true);
+                File.Copy(selectedsavepath + "\\additional_resources4.dat", resourcesPath + "\\additional_resources4.dat", true);
+                File.Copy(selectedsavepath + "\\bw1_ArenaPlayer_01.dat", resourcesPath + "\\bw1_ArenaPlayer_01.dat", true);
+                File.Copy(selectedsavepath + "\\bw1_pInfo_00.dat", resourcesPath + "\\bw1_pInfo_00.dat", true);
+                File.Copy(selectedsavepath + "\\bw1_pInfo_01.dat", resourcesPath + "\\bw1_pInfo_01.dat", true);
+                File.Copy(selectedsavepath + "\\bw1_pInfo_02.dat", resourcesPath + "\\bw1_pInfo_02.dat", true);
+                File.Copy(selectedsavepath + "\\bw1_pInfo_03.dat", resourcesPath + "\\bw1_pInfo_03.dat", true);
+                File.Copy(selectedsavepath + "\\bw1_pInfo_04.dat", resourcesPath + "\\bw1_pInfo_04.dat", true);
+                File.Copy(selectedsavepath + "\\extraResources1.dat", resourcesPath + "\\extraResources1.dat", true);
+                File.Copy(selectedsavepath + "\\extraResources2.dat", resourcesPath + "\\extraResources2.dat", true);
+                File.Copy(selectedsavepath + "\\extraResources3.dat", resourcesPath + "\\extraResources3.dat", true);
+                File.Copy(selectedsavepath + "\\extraResources4.dat", resourcesPath + "\\extraResources4.dat", true);
+                File.Copy(selectedsavepath + "\\output_log.txt", resourcesPath + "\\output_log.txt", true);
+                File.Copy(selectedsavepath + "\\resources1.dat", resourcesPath + "\\resources1.dat", true);
+                File.Copy(selectedsavepath + "\\resources2.dat", resourcesPath + "\\resources2.dat", true);
+                File.Copy(selectedsavepath + "\\resources3.dat", resourcesPath + "\\resources3.dat", true);
+                File.Copy(selectedsavepath + "\\resources4.dat", resourcesPath + "\\resources4.dat",true);
+
+                MessageBox.Show("File Transfer Sucessful", "Sucess", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("Something went wrong. Try creating a new game in boneworks and then exiting as well as backing up a save to this selected profile.", "Cant find save profile data", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         public void ValidateFileSystem()
         {
             //Filestructure
@@ -312,50 +345,16 @@ namespace BSM
             }
 
             DialogResult overwrite = MessageBox.Show("Are you sure? This will overwrite your selected profiles data with the games save data.", "Are You Sure?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-            if (cbxProfile.Text == "sandbox_save")
+
+            if (overwrite == DialogResult.Yes)
             {
-                if (overwrite == DialogResult.Yes)
+                if (Directory.Exists(resourcesPath) && Directory.Exists(sandboxpath))
                 {
-                    if (File.Exists(resourcesPath) && File.Exists(sandboxpath))
-                    {
-                        File.Copy(sandboxpath, resourcesPath, true);
-                        MessageBox.Show("File Transfer Sucessful", "Sucess", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    else if (!File.Exists(resourcesPath))
-                    {
-                        MessageBox.Show("Your boneworks does not seem to have a resources1 file present. Try launching the game to create it and then attempt again.", "Cant find save file", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    else if (!File.Exists(sandboxpath))
-                    {
-                        MessageBox.Show("Failed to find selected profiles save backup. It may not exist or there may have been an installation program. Try backing up save data to this profile if you believe this is a mistake.", "Cant find save profile data", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    else
-                    {
-                        MessageBox.Show("Failed to find the boneworks save data and the profile save data. Try creating a new game in boneworks and then exiting as well as backing up a save to this profile.", "Cant find save profile data", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
+                    copyToGame(dataPath + cbxProfile.Text.Replace(" ", "_"));
                 }
-            }
-            if (cbxProfile.Text == "personal_save")
-            {
-                if (overwrite == DialogResult.Yes)
+                else
                 {
-                    if (File.Exists(resourcesPath) && File.Exists(personalpath))
-                    {
-                        File.Copy(personalpath, resourcesPath, true);
-                        MessageBox.Show("File Transfer Sucessful", "Sucess", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    else if (!File.Exists(resourcesPath))
-                    {
-                        MessageBox.Show("Your boneworks does not seem to have a resources1 file present. Try launching the game to create it and then attempt again.", "Cant find save file", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    else if (!File.Exists(personalpath))
-                    {
-                        MessageBox.Show("Failed to find selected profiles save backup. It may not exist or there may have been an installation program. Try backing up save data to this profile if you believe this is a mistake.", "Cant find save profile data", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    else
-                    {
-                        MessageBox.Show("Failed to find the boneworks save data and the profile save data. Try creating a new game in boneworks and then exiting as well as backing up a save to this profile.", "Cant find save profile data", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
+                    MessageBox.Show("Failed to find the boneworks save data and the profile save data. Try creating a new game in boneworks and then exiting as well as backing up a save to this profile.", "Cant find save profile data", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
