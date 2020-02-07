@@ -52,6 +52,13 @@ namespace BSM
 
             //load cbx items
             LoadCbx();
+
+            //check if newer version is available
+            string version_number = File.ReadAllText(dataPath + "newest_version.txt");
+            if (version_number != "1.1")
+            {
+                MessageBox.Show("A newer version of BSM is available. You are currently using version " + version_number + "Please uninstall and download BSM again from the repo for an updated version with more features.", "Software out of date", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         public void PopulateSave(string selectedsavepath)
@@ -128,26 +135,65 @@ namespace BSM
 
             if (Directory.Exists(resourcesPath) && Directory.Exists(selectedsavepath))
             {
-                File.Copy(resourcesPath + "\\additional_resources1.dat", selectedsavepath + "\\additional_resources1.dat", true);
-                File.Copy(resourcesPath + "\\additional_resources1.dat.bak", selectedsavepath + "\\additional_resources1.dat.bak", true);
-                File.Copy(resourcesPath + "\\additional_resources2.dat", selectedsavepath + "\\additional_resources2.dat", true);
-                File.Copy(resourcesPath + "\\additional_resources3.dat", selectedsavepath + "\\additional_resources3.dat", true);
-                File.Copy(resourcesPath + "\\additional_resources4.dat", selectedsavepath + "\\additional_resources4.dat", true);
-                File.Copy(resourcesPath + "\\bw1_ArenaPlayer_01.dat", selectedsavepath + "\\bw1_ArenaPlayer_01.dat", true);
-                File.Copy(resourcesPath + "\\bw1_pInfo_00.dat", selectedsavepath + "\\bw1_pInfo_00.dat", true);
-                File.Copy(resourcesPath + "\\bw1_pInfo_01.dat", selectedsavepath + "\\bw1_pInfo_01.dat", true);
-                File.Copy(resourcesPath + "\\bw1_pInfo_02.dat", selectedsavepath + "\\bw1_pInfo_02.dat", true);
-                File.Copy(resourcesPath + "\\bw1_pInfo_03.dat", selectedsavepath + "\\bw1_pInfo_03.dat", true);
-                File.Copy(resourcesPath + "\\bw1_pInfo_04.dat", selectedsavepath + "\\bw1_pInfo_04.dat", true);
-                File.Copy(resourcesPath + "\\extraResources1.dat", selectedsavepath + "\\extraResources1.dat", true);
-                File.Copy(resourcesPath + "\\extraResources2.dat", selectedsavepath + "\\extraResources2.dat", true);
-                File.Copy(resourcesPath + "\\extraResources3.dat", selectedsavepath + "\\extraResources3.dat", true);
-                File.Copy(resourcesPath + "\\extraResources4.dat", selectedsavepath + "\\extraResources4.dat", true);
-                File.Copy(resourcesPath + "\\output_log.txt", selectedsavepath + "\\output_log.txt", true);
-                File.Copy(resourcesPath + "\\resources1.dat", selectedsavepath + "\\resources1.dat", true);
-                File.Copy(resourcesPath + "\\resources2.dat", selectedsavepath + "\\resources2.dat", true);
-                File.Copy(resourcesPath + "\\resources3.dat", selectedsavepath + "\\resources3.dat", true);
-                File.Copy(resourcesPath + "\\resources4.dat", selectedsavepath + "\\resources4.dat", true);
+                if (Directory.Exists(resourcesPath + "\\additional_resources1.dat"))
+                    File.Copy(resourcesPath + "\\additional_resources1.dat", selectedsavepath + "\\additional_resources1.dat", true);
+
+                if (Directory.Exists(resourcesPath + "\\additional_resources1.dat.bak"))
+                    File.Copy(resourcesPath + "\\additional_resources1.dat.bak", selectedsavepath + "\\additional_resources1.dat.bak", true);
+
+                if (Directory.Exists(resourcesPath + "\\additional_resources2.dat"))
+                    File.Copy(resourcesPath + "\\additional_resources2.dat", selectedsavepath + "\\additional_resources2.dat", true);
+
+                if (Directory.Exists(resourcesPath + "\\additional_resources3.dat"))
+                    File.Copy(resourcesPath + "\\additional_resources3.dat", selectedsavepath + "\\additional_resources3.dat", true);
+
+                if (Directory.Exists(resourcesPath + "\\additional_resources4.dat"))
+                    File.Copy(resourcesPath + "\\additional_resources4.dat", selectedsavepath + "\\additional_resources4.dat", true);
+
+                if (Directory.Exists(resourcesPath + "\\bw1_ArenaPlayer_01.dat"))
+                    File.Copy(resourcesPath + "\\bw1_ArenaPlayer_01.dat", selectedsavepath + "\\bw1_ArenaPlayer_01.dat", true);
+
+                if (Directory.Exists(resourcesPath + "\\bw1_pInfo_00.dat"))
+                    File.Copy(resourcesPath + "\\bw1_pInfo_00.dat", selectedsavepath + "\\bw1_pInfo_00.dat", true);
+
+                if (Directory.Exists(resourcesPath + "\\bw1_pInfo_01.dat"))
+                    File.Copy(resourcesPath + "\\bw1_pInfo_01.dat", selectedsavepath + "\\bw1_pInfo_01.dat", true);
+
+                if (Directory.Exists(resourcesPath + "\\bw1_pInfo_02.dat"))
+                    File.Copy(resourcesPath + "\\bw1_pInfo_02.dat", selectedsavepath + "\\bw1_pInfo_02.dat", true);
+
+                if (Directory.Exists(resourcesPath + "\\bw1_pInfo_03.dat"))
+                    File.Copy(resourcesPath + "\\bw1_pInfo_03.dat", selectedsavepath + "\\bw1_pInfo_03.dat", true);
+
+                if (Directory.Exists(resourcesPath + "\\bw1_pInfo_04.dat"))
+                    File.Copy(resourcesPath + "\\bw1_pInfo_04.dat", selectedsavepath + "\\bw1_pInfo_04.dat", true);
+
+                if (Directory.Exists(resourcesPath + "\\extraResources1.dat"))
+                    File.Copy(resourcesPath + "\\extraResources1.dat", selectedsavepath + "\\extraResources1.dat", true);
+
+                if (Directory.Exists(resourcesPath + "\\extraResources2.dat"))
+                    File.Copy(resourcesPath + "\\extraResources2.dat", selectedsavepath + "\\extraResources2.dat", true);
+
+                if (Directory.Exists(resourcesPath + "\\extraResources3.dat"))
+                    File.Copy(resourcesPath + "\\extraResources3.dat", selectedsavepath + "\\extraResources3.dat", true);
+
+                if (Directory.Exists(resourcesPath + "\\extraResources4.dat"))
+                    File.Copy(resourcesPath + "\\extraResources4.dat", selectedsavepath + "\\extraResources4.dat", true);
+
+                if (Directory.Exists(resourcesPath + "\\output_log.txt"))
+                    File.Copy(resourcesPath + "\\output_log.txt", selectedsavepath + "\\output_log.txt", true);
+
+                if (Directory.Exists(resourcesPath + "\\resources1.dat"))
+                    File.Copy(resourcesPath + "\\resources1.dat", selectedsavepath + "\\resources1.dat", true);
+
+                if (Directory.Exists(resourcesPath + "\\resources2.dat"))
+                    File.Copy(resourcesPath + "\\resources2.dat", selectedsavepath + "\\resources2.dat", true);
+
+                if (Directory.Exists(resourcesPath + "\\resources3.dat"))
+                    File.Copy(resourcesPath + "\\resources3.dat", selectedsavepath + "\\resources3.dat", true);
+
+                if (Directory.Exists(resourcesPath + "\\resources4.dat"))
+                    File.Copy(resourcesPath + "\\resources4.dat", selectedsavepath + "\\resources4.dat", true);
 
                 MessageBox.Show("File Transfer Sucessful", "Sucess", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -161,26 +207,65 @@ namespace BSM
         {
             if (Directory.Exists(resourcesPath) && Directory.Exists(selectedsavepath))
             {
-                File.Copy(selectedsavepath + "\\additional_resources1.dat", resourcesPath + "\\additional_resources1.dat", true);
-                File.Copy(selectedsavepath + "\\additional_resources1.dat.bak", resourcesPath + "\\additional_resources1.dat.bak", true);
-                File.Copy(selectedsavepath + "\\additional_resources2.dat", resourcesPath + "\\additional_resources2.dat", true);
-                File.Copy(selectedsavepath + "\\additional_resources3.dat", resourcesPath + "\\additional_resources3.dat", true);
-                File.Copy(selectedsavepath + "\\additional_resources4.dat", resourcesPath + "\\additional_resources4.dat", true);
-                File.Copy(selectedsavepath + "\\bw1_ArenaPlayer_01.dat", resourcesPath + "\\bw1_ArenaPlayer_01.dat", true);
-                File.Copy(selectedsavepath + "\\bw1_pInfo_00.dat", resourcesPath + "\\bw1_pInfo_00.dat", true);
-                File.Copy(selectedsavepath + "\\bw1_pInfo_01.dat", resourcesPath + "\\bw1_pInfo_01.dat", true);
-                File.Copy(selectedsavepath + "\\bw1_pInfo_02.dat", resourcesPath + "\\bw1_pInfo_02.dat", true);
-                File.Copy(selectedsavepath + "\\bw1_pInfo_03.dat", resourcesPath + "\\bw1_pInfo_03.dat", true);
-                File.Copy(selectedsavepath + "\\bw1_pInfo_04.dat", resourcesPath + "\\bw1_pInfo_04.dat", true);
-                File.Copy(selectedsavepath + "\\extraResources1.dat", resourcesPath + "\\extraResources1.dat", true);
-                File.Copy(selectedsavepath + "\\extraResources2.dat", resourcesPath + "\\extraResources2.dat", true);
-                File.Copy(selectedsavepath + "\\extraResources3.dat", resourcesPath + "\\extraResources3.dat", true);
-                File.Copy(selectedsavepath + "\\extraResources4.dat", resourcesPath + "\\extraResources4.dat", true);
-                File.Copy(selectedsavepath + "\\output_log.txt", resourcesPath + "\\output_log.txt", true);
-                File.Copy(selectedsavepath + "\\resources1.dat", resourcesPath + "\\resources1.dat", true);
-                File.Copy(selectedsavepath + "\\resources2.dat", resourcesPath + "\\resources2.dat", true);
-                File.Copy(selectedsavepath + "\\resources3.dat", resourcesPath + "\\resources3.dat", true);
-                File.Copy(selectedsavepath + "\\resources4.dat", resourcesPath + "\\resources4.dat",true);
+                if (Directory.Exists(selectedsavepath + "\\additional_resources1.dat"))
+                    File.Copy(selectedsavepath + "\\additional_resources1.dat", resourcesPath + "\\additional_resources1.dat", true);
+
+                if (Directory.Exists(selectedsavepath + "\\additional_resources1.dat.bak"))
+                    File.Copy(selectedsavepath + "\\additional_resources1.dat.bak", resourcesPath + "\\additional_resources1.dat.bak", true);
+
+                if (Directory.Exists(selectedsavepath + "\\additional_resources2.dat"))
+                    File.Copy(selectedsavepath + "\\additional_resources2.dat", resourcesPath + "\\additional_resources2.dat", true);
+
+                if (Directory.Exists(selectedsavepath + "\\additional_resources3.dat"))
+                    File.Copy(selectedsavepath + "\\additional_resources3.dat", resourcesPath + "\\additional_resources3.dat", true);
+
+                if (Directory.Exists(selectedsavepath + "\\additional_resources4.dat"))
+                    File.Copy(selectedsavepath + "\\additional_resources4.dat", resourcesPath + "\\additional_resources4.dat", true);
+
+                if (Directory.Exists(selectedsavepath + "\\bw1_ArenaPlayer_01.dat"))
+                    File.Copy(selectedsavepath + "\\bw1_ArenaPlayer_01.dat", resourcesPath + "\\bw1_ArenaPlayer_01.dat", true);
+
+                if (Directory.Exists(selectedsavepath + "\\bw1_pInfo_00.dat"))
+                    File.Copy(selectedsavepath + "\\bw1_pInfo_00.dat", resourcesPath + "\\bw1_pInfo_00.dat", true);
+
+                if (Directory.Exists(selectedsavepath + "\\bw1_pInfo_01.dat"))
+                    File.Copy(selectedsavepath + "\\bw1_pInfo_01.dat", resourcesPath + "\\bw1_pInfo_01.dat", true);
+
+                if (Directory.Exists(selectedsavepath + "\\bw1_pInfo_02.dat"))
+                    File.Copy(selectedsavepath + "\\bw1_pInfo_02.dat", resourcesPath + "\\bw1_pInfo_02.dat", true);
+
+                if (Directory.Exists(selectedsavepath + "\\bw1_pInfo_03.dat"))
+                    File.Copy(selectedsavepath + "\\bw1_pInfo_03.dat", resourcesPath + "\\bw1_pInfo_03.dat", true);
+
+                if (Directory.Exists(selectedsavepath + "\\bw1_pInfo_04.dat"))
+                    File.Copy(selectedsavepath + "\\bw1_pInfo_04.dat", resourcesPath + "\\bw1_pInfo_04.dat", true);
+
+                if (Directory.Exists(selectedsavepath + "\\extraResources1.dat"))
+                    File.Copy(selectedsavepath + "\\extraResources1.dat", resourcesPath + "\\extraResources1.dat", true);
+
+                if (Directory.Exists(selectedsavepath + "\\extraResources2.dat"))
+                    File.Copy(selectedsavepath + "\\extraResources2.dat", resourcesPath + "\\extraResources2.dat", true);
+
+                if (Directory.Exists(selectedsavepath + "\\extraResources3.dat"))
+                    File.Copy(selectedsavepath + "\\extraResources3.dat", resourcesPath + "\\extraResources3.dat", true);
+
+                if (Directory.Exists(selectedsavepath + "\\extraResources4.dat"))
+                    File.Copy(selectedsavepath + "\\extraResources4.dat", resourcesPath + "\\extraResources4.dat", true);
+
+                if (Directory.Exists(selectedsavepath + "\\output_log.txt"))
+                    File.Copy(selectedsavepath + "\\output_log.txt", resourcesPath + "\\output_log.txt", true);
+
+                if (Directory.Exists(selectedsavepath + "\\resources1.dat"))
+                    File.Copy(selectedsavepath + "\\resources1.dat", resourcesPath + "\\resources1.dat", true);
+
+                if (Directory.Exists(selectedsavepath + "\\resources2.dat"))
+                    File.Copy(selectedsavepath + "\\resources2.dat", resourcesPath + "\\resources2.dat", true);
+
+                if (Directory.Exists(selectedsavepath + "\\resources3.dat"))
+                    File.Copy(selectedsavepath + "\\resources3.dat", resourcesPath + "\\resources3.dat", true);
+
+                if (Directory.Exists(selectedsavepath + "\\resources4.dat"))
+                    File.Copy(selectedsavepath + "\\resources4.dat", resourcesPath + "\\resources4.dat",true);
 
                 MessageBox.Show("File Transfer Sucessful", "Sucess", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -228,6 +313,14 @@ namespace BSM
             }
 
             //file validation
+            if (!File.Exists(dataPath + "\\newest_version.txt"))
+            {
+                using (WebClient client = new WebClient())
+                {
+                    client.DownloadFile("https://raw.githubusercontent.com/Yoyolick/Boneworks-Save-Manager/master/newest_version", dataPath + "\\newest_version.txt");
+                    builtsomething = true;
+                }
+            }
             if (!File.Exists(dataPath + "\\sandbox_save\\resources1.dat"))
             {
                 sandboxpath = dataPath + "\\sandbox_save\\resources1.dat";
@@ -307,7 +400,7 @@ namespace BSM
 
         private void BtnPathHelp_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Copy the path to your game save data here, it should look something like:\nC:\\Users\\YOUR USER HERE\\AppData\\LocalLow\\Stress Level Zero\\BONEWORKS\\resources1.dat", "Help Window", MessageBoxButtons.OK, MessageBoxIcon.Question);
+            MessageBox.Show("Copy the path to your game save data here, it should look something like:\nC:\\Users\\YOUR USER HERE\\AppData\\LocalLow\\Stress Level Zero\\BONEWORKS", "Help Window", MessageBoxButtons.OK, MessageBoxIcon.Question);
         }
 
         private void BtnUpdate_Click(object sender, EventArgs e)
@@ -344,7 +437,7 @@ namespace BSM
                 MessageBox.Show("Select a profile from the drop down menu to use this function", "Select a save profile", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            DialogResult overwrite = MessageBox.Show("Are you sure? This will overwrite your selected profiles data with the games save data.", "Are You Sure?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            DialogResult overwrite = MessageBox.Show("Are you sure? This will overwrite your game's data with the profile's save data.", "Are You Sure?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
             if (overwrite == DialogResult.Yes)
             {
