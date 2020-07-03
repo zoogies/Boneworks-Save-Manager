@@ -388,7 +388,7 @@ namespace BSM
                 var themepath = dataPath + "\\theme.txt";
                 File.Create(themepath).Dispose();
                 builtsomething = true;
-                string[] theme = {"dark"};
+                string[] theme = {"light"};
                 File.WriteAllLines(dataPath + "theme.txt", theme);
             }
 
