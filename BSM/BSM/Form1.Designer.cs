@@ -267,9 +267,9 @@
             this.label7.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label7.Location = new System.Drawing.Point(147, 134);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(169, 25);
+            this.label7.Size = new System.Drawing.Size(166, 25);
             this.label7.TabIndex = 21;
-            this.label7.Text = "Custom Profiles:";
+            this.label7.Text = "Profile Creation:";
             // 
             // btnDelete
             // 

@@ -7,6 +7,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Resources;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -45,7 +46,7 @@ namespace BSM
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             var iconpath = dataPath + "application_icon.ico";
             this.Icon = new Icon(dataPath + "application_icon.ico");
-            cbxProfile.SelectedText = "personal save";
+            cbxProfile.SelectedText = "";
 
             //load theme
             ThemeLoad();
@@ -54,8 +55,12 @@ namespace BSM
             LoadCbx();
 
             //check if newer version is available
+            using (WebClient client = new WebClient())
+            {
+                client.DownloadFile("https://raw.githubusercontent.com/Yoyolick/Boneworks-Save-Manager/master/newest_version", dataPath + "\\newest_version.txt");
+            }
             string version_number = File.ReadAllText(dataPath + "newest_version.txt");
-            if (version_number != "1.1")
+            if (version_number != "1.1\n")
             {
                 MessageBox.Show("A newer version of BSM is available. You are currently using version " + version_number + "Please uninstall and download BSM again from the repo for an updated version with more features.", "Software out of date", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -63,6 +68,8 @@ namespace BSM
 
         public void PopulateSave(string selectedsavepath)
         {
+            /*
+             * LEGACY:
             File.Create(selectedsavepath + "\\additional_resources1.dat");
             File.Create(selectedsavepath + "\\additional_resources1.dat.bak");
             File.Create(selectedsavepath + "\\additional_resources2.dat");
@@ -83,7 +90,8 @@ namespace BSM
             File.Create(selectedsavepath + "\\resources2.dat");
             File.Create(selectedsavepath + "\\resources3.dat");
             File.Create(selectedsavepath + "\\resources4.dat");
-
+            */
+            copyToProfile(dataPath + cbxProfile.Text.Replace(" ", "_"));
         }
 
         public void LoadCbx()
@@ -133,22 +141,48 @@ namespace BSM
             //MessageBox.Show(resourcesPath, "Sucess", MessageBoxButtons.OK, MessageBoxIcon.Information); debug
             //MessageBox.Show(selectedsavepath, "Sucess", MessageBoxButtons.OK, MessageBoxIcon.Information); debug
 
+            //debug
+            bool copydebug = false;
+
+            if (copydebug == true)
+                MessageBox.Show("i did it", "s", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
             if (Directory.Exists(resourcesPath) && Directory.Exists(selectedsavepath))
             {
+                //MessageBox.Show(resourcesPath, "s", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //MessageBox.Show(selectedsavepath, "s", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                foreach (string dirPath in Directory.GetDirectories(resourcesPath, "*",SearchOption.AllDirectories))
+                    Directory.CreateDirectory(dirPath.Replace(resourcesPath, selectedsavepath));
+                foreach (string newPath in Directory.GetFiles(resourcesPath, "*.*",SearchOption.AllDirectories))
+                    File.Copy(newPath, newPath.Replace(resourcesPath, selectedsavepath), true);
+
+                /*
+                 * LEGACY
                 if (Directory.Exists(resourcesPath + "\\additional_resources1.dat"))
                     File.Copy(resourcesPath + "\\additional_resources1.dat", selectedsavepath + "\\additional_resources1.dat", true);
+                    if (copydebug == true)
+                        MessageBox.Show("i did it", "s", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 if (Directory.Exists(resourcesPath + "\\additional_resources1.dat.bak"))
                     File.Copy(resourcesPath + "\\additional_resources1.dat.bak", selectedsavepath + "\\additional_resources1.dat.bak", true);
+                    if (copydebug == true)
+                        MessageBox.Show("i did it", "s", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 if (Directory.Exists(resourcesPath + "\\additional_resources2.dat"))
                     File.Copy(resourcesPath + "\\additional_resources2.dat", selectedsavepath + "\\additional_resources2.dat", true);
+                    if (copydebug == true)
+                        MessageBox.Show("i did it", "s", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 if (Directory.Exists(resourcesPath + "\\additional_resources3.dat"))
                     File.Copy(resourcesPath + "\\additional_resources3.dat", selectedsavepath + "\\additional_resources3.dat", true);
+                    if (copydebug == true)
+                        MessageBox.Show("i did it", "s", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 if (Directory.Exists(resourcesPath + "\\additional_resources4.dat"))
                     File.Copy(resourcesPath + "\\additional_resources4.dat", selectedsavepath + "\\additional_resources4.dat", true);
+                    if (copydebug == true)
+                        MessageBox.Show("i did it", "s", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 if (Directory.Exists(resourcesPath + "\\bw1_ArenaPlayer_01.dat"))
                     File.Copy(resourcesPath + "\\bw1_ArenaPlayer_01.dat", selectedsavepath + "\\bw1_ArenaPlayer_01.dat", true);
@@ -194,6 +228,7 @@ namespace BSM
 
                 if (Directory.Exists(resourcesPath + "\\resources4.dat"))
                     File.Copy(resourcesPath + "\\resources4.dat", selectedsavepath + "\\resources4.dat", true);
+                */
 
                 MessageBox.Show("File Transfer Sucessful", "Sucess", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -207,6 +242,13 @@ namespace BSM
         {
             if (Directory.Exists(resourcesPath) && Directory.Exists(selectedsavepath))
             {
+
+                foreach (string dirPath in Directory.GetDirectories(selectedsavepath, "*", SearchOption.AllDirectories))
+                    Directory.CreateDirectory(dirPath.Replace(selectedsavepath, resourcesPath));
+                foreach (string newPath in Directory.GetFiles(selectedsavepath, "*.*", SearchOption.AllDirectories))
+                    File.Copy(newPath, newPath.Replace(selectedsavepath, resourcesPath), true);
+
+                /*
                 if (Directory.Exists(selectedsavepath + "\\additional_resources1.dat"))
                     File.Copy(selectedsavepath + "\\additional_resources1.dat", resourcesPath + "\\additional_resources1.dat", true);
 
@@ -266,6 +308,7 @@ namespace BSM
 
                 if (Directory.Exists(selectedsavepath + "\\resources4.dat"))
                     File.Copy(selectedsavepath + "\\resources4.dat", resourcesPath + "\\resources4.dat",true);
+                */
 
                 MessageBox.Show("File Transfer Sucessful", "Sucess", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -299,18 +342,6 @@ namespace BSM
                 Directory.CreateDirectory(dataPath);
                 builtsomething = true;
             }
-            if (!Directory.Exists(dataPath + "\\personal_save"))
-            {
-                Directory.CreateDirectory(dataPath + "\\personal_save");
-                builtsomething = true;
-                PopulateSave(dataPath + "\\personal_save");
-            }
-            if (!Directory.Exists(dataPath + "\\sandbox_save"))
-            {
-                Directory.CreateDirectory(dataPath + "\\sandbox_save");
-                builtsomething = true;
-                PopulateSave(dataPath + "\\sandbox_save");
-            }
 
             //file validation
             if (!File.Exists(dataPath + "\\newest_version.txt"))
@@ -321,18 +352,7 @@ namespace BSM
                     builtsomething = true;
                 }
             }
-            if (!File.Exists(dataPath + "\\sandbox_save\\resources1.dat"))
-            {
-                sandboxpath = dataPath + "\\sandbox_save\\resources1.dat";
-                File.Create(sandboxpath).Dispose();
-                builtsomething = true;
-            }
-            if (!File.Exists(dataPath + "\\personal_save\\resources1.dat"))
-            {
-                personalpath = dataPath + "\\personal_save\\resources1.dat";
-                File.Create(personalpath).Dispose();
-                builtsomething = true;
-            }
+
             if (!File.Exists(dataPath + "\\application_icon.ico"))
             {
                 using (WebClient client = new WebClient())
@@ -400,7 +420,7 @@ namespace BSM
 
         private void BtnPathHelp_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Copy the path to your game save data here, it should look something like:\nC:\\Users\\YOUR USER HERE\\AppData\\LocalLow\\Stress Level Zero\\BONEWORKS", "Help Window", MessageBoxButtons.OK, MessageBoxIcon.Question);
+            MessageBox.Show("Copy the path to your game save data folder here, it should look something like:\nC:\\Users\\YOUR USERNAME HERE\\AppData\\LocalLow\\Stress Level Zero\\BONEWORKS", "Help Window", MessageBoxButtons.OK, MessageBoxIcon.Question);
         }
 
         private void BtnUpdate_Click(object sender, EventArgs e)
@@ -412,7 +432,7 @@ namespace BSM
 
         private void BtnProfileHelp_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("There are 2 profiles, one for you to back up your personal save to, and the other is a 100% unlock save that you can load for sandbox mode. Please read the wiki on github for more information if needed.", "Help Window", MessageBoxButtons.OK, MessageBoxIcon.Question);
+            MessageBox.Show("In the below section you are able to create profiles, and in this section you can select them from a drop down and either back up your game to them or load them to your game. Please read the wiki on github for more information if needed.", "Help Window", MessageBoxButtons.OK, MessageBoxIcon.Question);
         }
 
         private void BtnSaveToProfile_Click(object sender, EventArgs e)
@@ -441,7 +461,7 @@ namespace BSM
 
             if (overwrite == DialogResult.Yes)
             {
-                if (Directory.Exists(resourcesPath) && Directory.Exists(sandboxpath))
+                if (Directory.Exists(resourcesPath) && Directory.Exists(dataPath + cbxProfile.Text.Replace(" ", "_")))
                 {
                     copyToGame(dataPath + cbxProfile.Text.Replace(" ", "_"));
                 }
@@ -454,7 +474,7 @@ namespace BSM
 
         private void BtnBrowseHelp_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Both of these browse buttons can be used to verify integrity of both BSM and Boneworks files. Use these if you are getting errors when backing up or loading save profiles.", "Help Window", MessageBoxButtons.OK, MessageBoxIcon.Question);
+            MessageBox.Show("These browse buttons can be used to open the location of BSM and Boneworks files. Use these if you are getting errors when backing up or loading save profiles and want to see if your file locations are correct.", "Help Window", MessageBoxButtons.OK, MessageBoxIcon.Question);
         }
 
         private void Label5_Click(object sender, EventArgs e)
@@ -499,6 +519,7 @@ namespace BSM
             LoadCbx();
 
             tbCustomName.Text = "";
+            cbxProfile.Text = customprofile;
             PopulateSave(dataPath + "\\" + customprofile.Replace(" ", "_"));
             MessageBox.Show("User profile " + "\"" + customprofile + "\"" + " created.", "Created", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
@@ -516,6 +537,7 @@ namespace BSM
                 Directory.Delete(dataPath + pathtodelete,true);
                 MessageBox.Show("Deleted profile sucessfully.", "Deleted", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 LoadCbx();
+                cbxProfile.Text = "";
 
             }
             catch
