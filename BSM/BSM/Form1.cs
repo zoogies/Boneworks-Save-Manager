@@ -44,8 +44,8 @@ namespace BSM
             //Window Settings and set startup values and images
             username = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
-            var iconpath = dataPath + "\\resources\\application_icon.ico";
-            this.Icon = new Icon(dataPath + "\\resources\\application_icon.ico");
+            var iconpath = dataPath + "\\application_icon.ico";
+            this.Icon = new Icon(dataPath + "\\application_icon.ico");
             cbxProfile.SelectedText = "";
 
             //load theme
@@ -344,52 +344,52 @@ namespace BSM
             }
 
             //file validation
-            if (!File.Exists(dataPath + "\\resources\\newest_version.txt"))
+            if (!File.Exists(dataPath + "\\newest_version.txt"))
             {
                 using (WebClient client = new WebClient())
                 {
-                    client.DownloadFile("https://raw.githubusercontent.com/Yoyolick/Boneworks-Save-Manager/master/newest_version", dataPath + "\\resources\\newest_version.txt");
+                    client.DownloadFile("https://raw.githubusercontent.com/Yoyolick/Boneworks-Save-Manager/master/newest_version.txt", dataPath + "\\newest_version.txt");
                     builtsomething = true;
                 }
             }
 
-            if (!File.Exists(dataPath + "\\resources\\application_icon.ico"))
+            if (!File.Exists(dataPath + "\\application_icon.ico"))
             {
                 using (WebClient client = new WebClient())
                 {
-                    client.DownloadFile("http://www.iconj.com/ico/l/u/lufczubxnj.ico", dataPath + "\\resources\\application_icon.ico");
+                    client.DownloadFile("https://raw.githubusercontent.com/Yoyolick/Boneworks-Save-Manager/master/BSM/resources/application_icon.ico", dataPath + "\\application_icon.ico");
                     builtsomething = true;
                 }
             }
-            if (!File.Exists(dataPath + "\\resources\\splash_image.jpg"))
+            if (!File.Exists(dataPath + "\\splash_image.jpg"))
             {
                 using (WebClient client = new WebClient())
                 {
-                    client.DownloadFile("https://pbs.twimg.com/media/ENEpsVpWwAkpS76.jpg", dataPath + "\\resources\\splash_image.jpg");
+                    client.DownloadFile("https://raw.githubusercontent.com/Yoyolick/Boneworks-Save-Manager/master/BSM/resources/splash_image.jpg", dataPath + "\\splash_image.jpg");
                     builtsomething = true;
                 }
             }
-            if (!File.Exists(dataPath + "\\resources\\splash_image_light.png"))
+            if (!File.Exists(dataPath + "\\splash_image_light.png"))
             {
                 using (WebClient client = new WebClient())
                 {
-                    client.DownloadFile("https://steamcdn-a.akamaihd.net/steam/apps/823500/extras/logo_boneworks.png?t=1576000732", dataPath + "\\resources\\splash_image_light.png");
+                    client.DownloadFile("https://raw.githubusercontent.com/Yoyolick/Boneworks-Save-Manager/master/BSM/resources/splash_image_light.png", dataPath + "\\splash_image_light.png");
                     builtsomething = true;
                 }
             }
-            if (!File.Exists(dataPath + "\\resources\\saved_path.txt"))
+            if (!File.Exists(dataPath + "\\saved_path.txt"))
             {
-                var savedpath = dataPath + "\\resources\\saved_path.txt";
+                var savedpath = dataPath + "\\saved_path.txt";
                 File.Create(savedpath).Dispose();
                 builtsomething = true;
             }
-            if (!File.Exists(dataPath + "\\resources\\theme.txt"))
+            if (!File.Exists(dataPath + "\\theme.txt"))
             {
-                var themepath = dataPath + "\\resources\\theme.txt";
+                var themepath = dataPath + "\\theme.txt";
                 File.Create(themepath).Dispose();
                 builtsomething = true;
                 string[] theme = {"light"};
-                File.WriteAllLines(dataPath + "\\resources\\theme.txt", theme);
+                File.WriteAllLines(dataPath + "\\theme.txt", theme);
             }
 
             //auto assume boneworks path if not set
