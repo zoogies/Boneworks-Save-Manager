@@ -57,9 +57,9 @@ namespace BSM
             //check if newer version is available
             using (WebClient client = new WebClient())
             {
-                client.DownloadFile("https://raw.githubusercontent.com/Yoyolick/Boneworks-Save-Manager/master/resources/newest_version", dataPath + "\\resources\\newest_version.txt");
+                client.DownloadFile("https://raw.githubusercontent.com/Yoyolick/Boneworks-Save-Manager/master/BSM/resources/newest_version.txt", dataPath + "\\newest_version.txt");
             }
-            string version_number = File.ReadAllText(dataPath + "resources\\newest_version.txt");
+            string version_number = File.ReadAllText(dataPath + "\\newest_version.txt");
             if (version_number != "1.2\n")
             {
                 MessageBox.Show("A newer version of BSM is available. You are currently using version " + version_number + "Please uninstall and download BSM again from the repo for an updated version with more features.", "Software out of date", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -348,7 +348,7 @@ namespace BSM
             {
                 using (WebClient client = new WebClient())
                 {
-                    client.DownloadFile("https://raw.githubusercontent.com/Yoyolick/Boneworks-Save-Manager/master/newest_version.txt", dataPath + "\\newest_version.txt");
+                    client.DownloadFile("https://raw.githubusercontent.com/Yoyolick/Boneworks-Save-Manager/master/BSM/resources/newest_version.txt", dataPath + "\\newest_version.txt");
                     builtsomething = true;
                 }
             }
@@ -484,7 +484,7 @@ namespace BSM
 
         private void BtnBrowseBoneworks_Click(object sender, EventArgs e)
         {
-            Process.Start("explorer.exe", Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "LocalLow\\Stress Level Zero\\BONEWORKS");
+            Process.Start("explorer.exe", (Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\LocalLow\\Stress Level Zero\\BONEWORKS"));
             //TODO fix
         }
 
