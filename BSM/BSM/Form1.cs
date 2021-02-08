@@ -106,34 +106,15 @@ namespace BSM
 
         public void ThemeLoad()
         {
-            //detect theme in text
-            theme = File.ReadAllText(dataPath + "theme.txt");
-            theme = theme.Trim('\n', '\r');
-
-            if (theme == "dark")
-            {
-                pbSplashImage.Image = Image.FromFile(dataPath + "splash_image.jpg");
-                this.BackColor = Color.FromArgb(47, 45, 45);
-                label1.ForeColor = Color.White;
-                label2.ForeColor = Color.White;
-                label3.ForeColor = Color.White;
-                label4.ForeColor = Color.White;
-                label5.ForeColor = Color.White;
-                label6.ForeColor = Color.White;
-                label7.ForeColor = Color.White;
-            }
-            if (theme == "light")
-            {
-                pbSplashImage.Image = Image.FromFile(dataPath + "splash_image_light.png");
-                this.BackColor = Color.FromArgb(238, 238, 238);
-                label1.ForeColor = Color.Black;
-                label2.ForeColor = Color.Black;
-                label3.ForeColor = Color.Black;
-                label4.ForeColor = Color.Black;
-                label5.ForeColor = Color.Black;
-                label6.ForeColor = Color.Black;
-                label7.ForeColor = Color.Black;
-            }
+            label1.ForeColor = Color.Yellow;
+            label2.ForeColor = Color.Yellow;
+            label3.ForeColor = Color.Yellow;
+            label4.ForeColor = Color.Yellow;
+            label5.ForeColor = Color.Yellow;
+            label6.ForeColor = Color.Yellow;
+            label7.ForeColor = Color.Yellow;
+            this.BackColor = Color.FromArgb(0, 0, 0);
+            tbPath.ForeColor = Color.Yellow;
         }
 
         private void copyToProfile(string selectedsavepath)
@@ -382,14 +363,6 @@ namespace BSM
                 var savedpath = dataPath + "\\saved_path.txt";
                 File.Create(savedpath).Dispose();
                 builtsomething = true;
-            }
-            if (!File.Exists(dataPath + "\\theme.txt"))
-            {
-                var themepath = dataPath + "\\theme.txt";
-                File.Create(themepath).Dispose();
-                builtsomething = true;
-                string[] theme = {"light"};
-                File.WriteAllLines(dataPath + "\\theme.txt", theme);
             }
 
             //auto assume boneworks path if not set
