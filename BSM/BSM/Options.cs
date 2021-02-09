@@ -27,23 +27,6 @@ namespace BSM
             //set path variables
             dataPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\BSM\\";
             resourcesPath = System.IO.File.ReadAllText(dataPath + "saved_path.txt");
-
-            //detect theme in text
-            var theme = File.ReadAllText(dataPath + "theme.txt");
-            theme = theme.Trim('\n', '\r');
-
-            if (theme == "dark")
-            {
-                this.BackColor = Color.FromArgb(47, 45, 45);
-                label1.ForeColor = Color.White;
-                cbxTheme.Text = "dark";
-            }
-            if (theme == "light")
-            {
-                this.BackColor = Color.FromArgb(238, 238, 238);
-                label1.ForeColor = Color.Black;
-                cbxTheme.Text = "light";
-            }
         }
 
         private void btnDone_Click(object sender, EventArgs e)
