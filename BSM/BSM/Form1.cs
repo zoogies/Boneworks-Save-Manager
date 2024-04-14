@@ -57,10 +57,10 @@ namespace BSM
             //check if newer version is available
             using (WebClient client = new WebClient())
             {
-                client.DownloadFile("https://raw.githubusercontent.com/Yoyolick/Boneworks-Save-Manager/master/BSM/resources/newest_version.txt", dataPath + "\\newest_version.txt");
+                client.DownloadFile("https://raw.githubusercontent.com/zoogies/Boneworks-Save-Manager/master/BSM/resources/newest_version.txt", dataPath + "\\newest_version.txt");
             }
             string version_number = File.ReadAllText(dataPath + "\\newest_version.txt");
-            if (version_number != "1.2\n")
+            if (version_number != "1.3\n")
             {
                 MessageBox.Show("A newer version of BSM is available. You are currently using version " + version_number + "Please uninstall and download BSM again from the repo for an updated version with more features.", "Software out of date", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -348,7 +348,7 @@ namespace BSM
             {
                 using (WebClient client = new WebClient())
                 {
-                    client.DownloadFile("https://raw.githubusercontent.com/Yoyolick/Boneworks-Save-Manager/master/BSM/resources/newest_version.txt", dataPath + "\\newest_version.txt");
+                    client.DownloadFile("https://raw.githubusercontent.com/zoogies/Boneworks-Save-Manager/master/BSM/resources/newest_version.txt", dataPath + "\\newest_version.txt");
                     builtsomething = true;
                 }
             }
@@ -357,7 +357,7 @@ namespace BSM
             {
                 using (WebClient client = new WebClient())
                 {
-                    client.DownloadFile("https://raw.githubusercontent.com/Yoyolick/Boneworks-Save-Manager/master/BSM/resources/application_icon.ico", dataPath + "\\application_icon.ico");
+                    client.DownloadFile("https://raw.githubusercontent.com/zoogies/Boneworks-Save-Manager/master/BSM/resources/application_icon.ico", dataPath + "\\application_icon.ico");
                     builtsomething = true;
                 }
             }
@@ -365,7 +365,7 @@ namespace BSM
             {
                 using (WebClient client = new WebClient())
                 {
-                    client.DownloadFile("https://raw.githubusercontent.com/Yoyolick/Boneworks-Save-Manager/master/BSM/resources/splash_image.jpg", dataPath + "\\splash_image.jpg");
+                    client.DownloadFile("https://raw.githubusercontent.com/zoogies/Boneworks-Save-Manager/master/BSM/resources/splash_image.jpg", dataPath + "\\splash_image.jpg");
                     builtsomething = true;
                 }
             }
@@ -373,7 +373,7 @@ namespace BSM
             {
                 using (WebClient client = new WebClient())
                 {
-                    client.DownloadFile("https://raw.githubusercontent.com/Yoyolick/Boneworks-Save-Manager/master/BSM/resources/splash_image_light.png", dataPath + "\\splash_image_light.png");
+                    client.DownloadFile("https://raw.githubusercontent.com/zoogies/Boneworks-Save-Manager/master/BSM/resources/splash_image_light.png", dataPath + "\\splash_image_light.png");
                     builtsomething = true;
                 }
             }
@@ -479,7 +479,7 @@ namespace BSM
 
         private void Label5_Click(object sender, EventArgs e)
         {
-            Process.Start("https://github.com/Yoyolick/Boneworks-Save-Manager/issues");
+            Process.Start("https://github.com/zoogies/Boneworks-Save-Manager/issues");
         }
 
         private void BtnBrowseBoneworks_Click(object sender, EventArgs e)
