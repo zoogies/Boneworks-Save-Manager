@@ -23,6 +23,7 @@ namespace BSM
         public static string sandboxpath;
         public static string personalpath;
         public static string theme;
+        public static bool duplicate;
 
         public Form1()
         {
@@ -62,7 +63,7 @@ namespace BSM
             string version_number = File.ReadAllText(dataPath + "\\newest_version.txt");
             if (version_number != "1.3\n")
             {
-                MessageBox.Show("A newer version of BSM is available. You are currently using version " + version_number + "Please uninstall and download BSM again from the repo for an updated version with more features.", "Software out of date", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("A newer version of BSM is available. You are currently using version " + version_number + "Please uninstall and download BSM again from the repo or Bonetome for an updated version with more features.", "Software out of date", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -106,34 +107,15 @@ namespace BSM
 
         public void ThemeLoad()
         {
-            //detect theme in text
-            theme = File.ReadAllText(dataPath + "theme.txt");
-            theme = theme.Trim('\n', '\r');
-
-            if (theme == "dark")
-            {
-                pbSplashImage.Image = Image.FromFile(dataPath + "splash_image.jpg");
-                this.BackColor = Color.FromArgb(47, 45, 45);
-                label1.ForeColor = Color.White;
-                label2.ForeColor = Color.White;
-                label3.ForeColor = Color.White;
-                label4.ForeColor = Color.White;
-                label5.ForeColor = Color.White;
-                label6.ForeColor = Color.White;
-                label7.ForeColor = Color.White;
-            }
-            if (theme == "light")
-            {
-                pbSplashImage.Image = Image.FromFile(dataPath + "splash_image_light.png");
-                this.BackColor = Color.FromArgb(238, 238, 238);
-                label1.ForeColor = Color.Black;
-                label2.ForeColor = Color.Black;
-                label3.ForeColor = Color.Black;
-                label4.ForeColor = Color.Black;
-                label5.ForeColor = Color.Black;
-                label6.ForeColor = Color.Black;
-                label7.ForeColor = Color.Black;
-            }
+            label1.ForeColor = Color.Yellow;
+            label2.ForeColor = Color.Yellow;
+            label3.ForeColor = Color.Yellow;
+            //label4.ForeColor = Color.Yellow;
+            //label5.ForeColor = Color.Yellow;
+            label6.ForeColor = Color.Yellow;
+            label7.ForeColor = Color.Yellow;
+            this.BackColor = Color.FromArgb(15, 15, 15);
+            tbPath.ForeColor = Color.Yellow;
         }
 
         private void copyToProfile(string selectedsavepath)
@@ -230,7 +212,7 @@ namespace BSM
                     File.Copy(resourcesPath + "\\resources4.dat", selectedsavepath + "\\resources4.dat", true);
                 */
 
-                MessageBox.Show("File Transfer Sucessful", "Sucess", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //MessageBox.Show("File Transfer Sucessful", "Sucess", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
@@ -310,7 +292,7 @@ namespace BSM
                     File.Copy(selectedsavepath + "\\resources4.dat", resourcesPath + "\\resources4.dat",true);
                 */
 
-                MessageBox.Show("File Transfer Sucessful", "Sucess", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //MessageBox.Show("File Transfer Sucessful", "Sucess", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
@@ -382,14 +364,6 @@ namespace BSM
                 var savedpath = dataPath + "\\saved_path.txt";
                 File.Create(savedpath).Dispose();
                 builtsomething = true;
-            }
-            if (!File.Exists(dataPath + "\\theme.txt"))
-            {
-                var themepath = dataPath + "\\theme.txt";
-                File.Create(themepath).Dispose();
-                builtsomething = true;
-                string[] theme = {"light"};
-                File.WriteAllLines(dataPath + "\\theme.txt", theme);
             }
 
             //auto assume boneworks path if not set
@@ -484,7 +458,7 @@ namespace BSM
 
         private void BtnBrowseBoneworks_Click(object sender, EventArgs e)
         {
-            Process.Start("explorer.exe", (Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\LocalLow\\Stress Level Zero\\BONEWORKS"));
+            
             //TODO fix
         }
 
@@ -512,25 +486,40 @@ namespace BSM
             ThemeLoad();
         }
 
-        private void btnCreateProfile_Click(object sender, EventArgs e)
+        public void CreateProfile()
         {
             var customprofile = tbCustomName.Text;
-            Directory.CreateDirectory(dataPath + "\\" + customprofile.Replace(" ", "_"));
-            LoadCbx();
+            if (tbCustomName.Text != "" && tbCustomName.Text != " ")
+            {
+                for (int i = 0; i < cbxProfile.Items.Count; i++)
+                {
+                    if(tbCustomName.Text == cbxProfile.GetItemText(cbxProfile.Items[i]))
+                    {
+                        duplicate = true;
+                    }
+                }
+                if(duplicate == false)
+                {
+                    Directory.CreateDirectory(dataPath + "\\" + customprofile.Replace(" ", "_"));
+                    LoadCbx();
 
-            tbCustomName.Text = "";
-            cbxProfile.Text = customprofile;
-            PopulateSave(dataPath + "\\" + customprofile.Replace(" ", "_"));
-            MessageBox.Show("User profile " + "\"" + customprofile + "\"" + " created.", "Created", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    tbCustomName.Text = "";
+                    cbxProfile.Text = customprofile;
+                    PopulateSave(dataPath + "\\" + customprofile.Replace(" ", "_"));
+                    MessageBox.Show("User profile " + "\"" + customprofile + "\"" + " created.", "Created", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+            }
+            MessageBox.Show("Failed to create profile, please make sure the name is valid and not identical to another profile.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
             try
             {
-                if (cbxProfile.Text == "personal save" || cbxProfile.Text == "sandbox save")
+                if (cbxProfile.Text == "")
                 {
-                    MessageBox.Show("This is an application defualt profile, you cannot delete it.", "Protected Profile", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Please select a profile to delete.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
                 var pathtodelete = cbxProfile.Text.Replace(" ","_");
@@ -543,8 +532,58 @@ namespace BSM
             catch
             {
                 var pathtodelete = cbxProfile.Text.Replace(" ", "_");
-                MessageBox.Show("An error occured. Attempted to delete: " + dataPath + pathtodelete + "Restarting BSM usually fixes this.", "Something went wrong", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("An error occured. Attempted to delete: " + dataPath + pathtodelete + ". Please make sure you arent trying to delete a blank profile", "Something went wrong", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void createProfileTxt_Click(object sender, EventArgs e)
+        {
+            CreateProfile();
+        }
+
+        private void createProfileBtn_Click(object sender, EventArgs e)
+        {
+            CreateProfile();
+        }
+
+        private void txtValidate_Click(object sender, EventArgs e)
+        {
+            ValidateFileSystem();
+        }
+
+        private void btnValidate_Click(object sender, EventArgs e)
+        {
+            ValidateFileSystem();
+        }
+
+        private void txtBrowseBsm_Click(object sender, EventArgs e)
+        {
+            Process.Start("explorer.exe", dataPath);
+        }
+
+        private void browseBsmBtn_Click(object sender, EventArgs e)
+        {
+            Process.Start("explorer.exe", dataPath);
+        }
+
+        private void txtBrowseGame_Click(object sender, EventArgs e)
+        {
+            Process.Start("explorer.exe", resourcesPath);
+        }
+
+        private void btnBrowseGame_Click(object sender, EventArgs e)
+        {
+            Process.Start("explorer.exe", resourcesPath);
+        }
+
+        private void btnGameData_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtGameData_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
