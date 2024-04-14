@@ -212,7 +212,7 @@
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(142, 13);
             this.label4.TabIndex = 14;
-            this.label4.Text = "BSM v1.3 Ryan Zmuda 2021";
+            this.label4.Text = "BSM v1.3 Ryan Zmuda 2020 - 2024";
             // 
             // label5
             // 
